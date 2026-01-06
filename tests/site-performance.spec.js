@@ -1,6 +1,28 @@
 const { test, expect } = require('@playwright/test');
+const fs = require('fs');
+const path = require('path');
 
 test.describe('Pocket Breath Coach Website', () => {
+  // Create results directory if it doesn't exist
+  test.beforeAll(() => {
+    const resultsDir = path.join(__dirname, 'results');
+    if (!fs.existsSync(resultsDir)) {
+      fs.mkdirSync(resultsDir, { recursive: true });
+    }
+  });
+
+  // Take a screenshot after each test
+  test.afterEach(async ({ page }, testInfo) => {
+    const status = testInfo.status === 'passed' ? 'PASSED' : 'FAILED';
+    const now = new Date();
+    const datetime = now.toISOString().replace(/[:.]/g, '-').replace('T', '_').split('.')[0];
+    const filename = `${status}_${datetime}.png`;
+    const screenshotPath = path.join(__dirname, 'results', filename);
+
+    await page.screenshot({ path: screenshotPath, fullPage: true });
+    console.log(`Screenshot saved: ${filename}`);
+  });
+
   test('should load quickly and display main content', async ({ page }) => {
     const startTime = Date.now();
 

@@ -34,6 +34,14 @@ npm run test:headed
 - **Responsive Design**: Site works on mobile viewports
 - **Functionality**: App Store links are visible and working
 
+### Test Screenshots
+
+After each test runs, a full-page screenshot is automatically saved to `tests/results/` with the format:
+- `PASSED_{datetime}.png` - For successful tests
+- `FAILED_{datetime}.png` - For failed tests
+
+This helps with visual regression testing and debugging.
+
 ## Development
 
 This is a static site with no build process. Simply edit `index.html` and push to the `main` branch to deploy via GitHub Pages.
