@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Pocket Breath Coach</title>
+
+    <!-- App Icons for iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://pocketbreathcoach.com/apple-touch-icon.png">
+
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-orange: #FF7A3D;
+            --primary-orange-hover: #FF5100;
+            --text-dark: #1E1810;
+            --text-medium: #575250;
+            --background-light: #F8F5F4;
+            --white: #FFFFFF;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-medium);
+            background: linear-gradient(129deg, #50336d 0%, #2c71e8 50%, #e5e7eb 100%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 100;
+            padding: 20px 0;
+            background: transparent;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .app-download-btn {
+            height: 58px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .app-download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Privacy Hero */
+        .privacy-hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .privacy-hero h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .privacy-hero .updated {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+        }
+
+        /* Privacy Content */
+        .privacy-section {
+            background: var(--white);
+            padding: 70px 0 100px;
+            margin-top: 20px;
+            border-radius: 50px 50px 0 0;
+            position: relative;
+        }
+
+        .privacy-content {
+            max-width: 820px;
+            margin: 0 auto;
+            color: var(--text-dark);
+        }
+
+        .privacy-content p {
+            color: var(--text-medium);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .privacy-content p.intro {
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+
+        .privacy-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-top: 50px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-orange);
+            display: inline-block;
+        }
+
+        .privacy-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .privacy-content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 18px;
+        }
+
+        .privacy-content ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            color: var(--text-medium);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .privacy-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary-orange);
+        }
+
+        .privacy-content ul li strong {
+            color: var(--text-dark);
+        }
+
+        .privacy-content a {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        .privacy-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-content {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .header-buttons {
+                display: none;
+            }
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .privacy-hero {
+                padding: 40px 0 30px;
+            }
+
+            .privacy-hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .privacy-section {
+                padding: 50px 0 70px;
+            }
+
+            .privacy-content h2 {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .privacy-hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .app-download-btn {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="textlogo.png" alt="Pocket Breath Coach" />
+                    </a>
+                </div>
+
+                <div class="header-buttons">
+                    <a href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank">
+                        <img src="app-store.png" alt="Download on the App Store" class="app-download-btn" />
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach" target="_blank">
+                        <img src="google-play.png" alt="Get it on Google Play" class="app-download-btn" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Privacy Hero -->
+    <section class="privacy-hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="updated">Last updated: May 2026</p>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section class="privacy-section">
+        <div class="container">
+            <div class="privacy-content">
+                <p class="intro">
+                    Pocket Breath Coach is committed to protecting the privacy of our users. We understand the importance of keeping personal information secure and private, and we have implemented measures to ensure that all user data is protected. This Privacy Policy outlines how we collect, use, and protect user data in our mobile app, Pocket Breath Coach.
+                </p>
+                <p>
+                    By using our app, you agree to the terms of this Privacy Policy. If you do not agree with these terms, please do not use the app. This policy applies to all users of the app, whether or not they have created an account or subscribed to premium features.
+                </p>
+                <p>
+                    Please read this policy carefully to understand our practices regarding user data. We may update this policy from time to time, so we encourage you to review it regularly. If you have any questions or concerns about our privacy practices, please contact us using the information provided in this policy.
+                </p>
+
+                <h2>Collection of Information</h2>
+                <p>We may collect certain types of data from users of Pocket Breath Coach, including:</p>
+                <ul>
+                    <li><strong>Personal Information:</strong> When you create an account, we collect personal information such as your name, email address, and other information you choose to provide. If you subscribe to our premium features, we may also collect payment information such as credit card details.</li>
+                    <li><strong>Usage Information:</strong> We collect data about how you use the app, such as the features you access, the amount of time you spend using the app, and other interactions with the app. This information helps us understand how users interact with Pocket Breath Coach and improve the user experience.</li>
+                    <li><strong>Device Information:</strong> We may collect information about the device you use to access the app, such as the device type, operating system, and browser type.</li>
+                    <li><strong>Log Data:</strong> We automatically collect certain information when you use the app, such as your IP address, device information, and usage data. This information is used to diagnose technical problems and improve the app.</li>
+                    <li><strong>Cookies and Other Tracking Technologies:</strong> We may use cookies, pixel tags, and other tracking technologies to collect information about your use of the app. This information helps us understand how users interact with the app and personalize the user experience.</li>
+                </ul>
+                <p>
+                    We may also receive data from third-party sources, such as social media platforms and analytics providers. We may combine this data with the data we collect from users of the app.
+                </p>
+                <p>
+                    Please note that if you choose not to provide certain types of data, some features of the app may not be available to you.
+                </p>
+
+                <h2>Use of Information</h2>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li><strong>To improve the app and provide better service to users:</strong> We analyze usage data to understand how users interact with the app and identify areas for improvement. We may also use this data to develop new features and services for our users.</li>
+                    <li><strong>To provide premium features to subscribers:</strong> If you subscribe to our premium features, we use your payment information to process your subscription and provide access to these features.</li>
+                    <li><strong>For marketing purposes:</strong> If you create an account, we may send you transactional emails about your account, such as confirmation emails and password reset emails. We may also send marketing emails about our products and services, if you have given us your consent to do so.</li>
+                </ul>
+
+                <h2>User Control</h2>
+                <p>We believe that users should have control over their personal information. Pocket Breath Coach provides the following options for users to control their data:</p>
+                <ul>
+                    <li><strong>Account Management:</strong> You can create an account to save your data to the cloud and recover it later. If you wish to delete your account, you can do so from within the app. Please note that deleting your account will permanently delete all associated data.</li>
+                    <li><strong>Subscription Management:</strong> If you subscribe to our premium features, you can manage your subscription from within the app or through the platform where you made the purchase.</li>
+                    <li><strong>Marketing Preferences:</strong> If you have given us your consent to receive marketing emails, you can unsubscribe at any time by clicking the unsubscribe link in the email.</li>
+                    <li><strong>Cookie Settings:</strong> You can control how cookies are used in the app by adjusting your device settings.</li>
+                </ul>
+                <p>
+                    Please note that some types of data, such as log data and anonymized usage data, cannot be deleted by users. However, we take measures to ensure that this data is protected and used only for legitimate purposes.
+                </p>
+                <p>
+                    If you have any questions or concerns about your data, please contact us at <a href="mailto:luke@pocketbreathcoach.com">luke@pocketbreathcoach.com</a>.
+                </p>
+
+                <h2>Data Security</h2>
+                <p>At Pocket Breath Coach, we take data security very seriously. We have implemented measures to ensure that user data is protected from unauthorized access, disclosure, alteration, or destruction. These measures include:</p>
+                <ul>
+                    <li><strong>Secure Storage:</strong> All user data is stored securely on servers with restricted access.</li>
+                    <li><strong>Encryption:</strong> We use industry-standard encryption technology to protect data in transit.</li>
+                    <li><strong>Access Controls:</strong> We limit access to user data to authorized personnel who need it to perform their job functions.</li>
+                    <li><strong>Regular Auditing:</strong> We conduct regular security audits to ensure that our systems are up to date and secure.</li>
+                    <li><strong>Disaster Recovery:</strong> We have a disaster recovery plan in place to ensure that user data is protected in the event of a system failure or other disaster.</li>
+                </ul>
+                <p>
+                    Despite our best efforts, no system can be completely secure. We cannot guarantee that user data will be completely protected from unauthorized access, disclosure, alteration, or destruction. If we become aware of a data breach that affects user data, we will take appropriate steps to notify affected users and take action to mitigate any harm caused by the breach.
+                </p>
+                <p>
+                    If you have any questions or concerns about data security at Pocket Breath Coach, please contact us using the information provided in this policy.
+                </p>
+
+                <h2>Third-Party Access</h2>
+                <p>
+                    At Pocket Breath Coach, we do not sell user data to third parties. However, we may share data with service providers who assist us with app development, hosting, and other technical services. These providers are bound by confidentiality agreements and are required to protect user data in accordance with our privacy policy.
+                </p>
+                <p>We may also share data with law enforcement agencies or other third parties if we believe in good faith that it is necessary to:</p>
+                <ul>
+                    <li>Comply with a legal obligation or court order.</li>
+                    <li>Protect the rights, property, or safety of Pocket Breath Coach, its users, or others.</li>
+                    <li>Investigate or prevent illegal activities or suspected fraud.</li>
+                </ul>
+                <p>
+                    Please note that if you choose to interact with third-party services through our app, such as social media sharing or external links, their privacy policies and data handling practices will apply. We encourage you to review these policies carefully before interacting with third-party services.
+                </p>
+                <p>
+                    If you have any questions or concerns about third-party access to user data, please contact us using the information provided in this policy.
+                </p>
+
+                <h2>Policy Changes</h2>
+                <p>
+                    We reserve the right to update or modify this privacy policy at any time, without prior notice. Changes to the policy will be effective immediately upon posting to the app or website. By continuing to use Pocket Breath Coach after a revised policy has been posted, you agree to be bound by the updated terms.
+                </p>
+                <p>
+                    We encourage you to review this policy periodically to stay informed about how we collect, use, and protect your data. If we make material changes to the policy, we will notify you by email or through the app.
+                </p>
+                <p>
+                    If you disagree with any changes to this policy, you may delete your account and stop using Pocket Breath Coach. If you have any questions or concerns about policy changes, please contact us using the information provided in this policy.
+                </p>
+
+                <h2>Contact Us</h2>
+                <p>
+                    If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:luke@headfulness.com">luke@headfulness.com</a>
+                </p>
+
+                <h2>Conclusion</h2>
+                <p>
+                    At Pocket Breath Coach, we are committed to protecting user privacy and providing transparency about our data practices. We collect only the data necessary to provide our services, and we use that data only for legitimate purposes. We do not sell user data to third parties.
+                </p>
+                <p>
+                    We take data security seriously and have implemented measures to protect user data from unauthorized access, disclosure, alteration, or destruction. We also provide users with control over their data through account management, subscription management, and marketing preferences.
+                </p>
+                <p>
+                    If you have any questions or concerns about our privacy policy or data practices, please contact us using the information provided in this policy. We will do our best to address your concerns and provide assistance where possible.
+                </p>
+                <p>
+                    Thank you for using Pocket Breath Coach. We hope our app helps you achieve your wellness goals.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Copyright © <span id="current-year"></span> Pocket Breath Coach</p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

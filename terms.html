@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Pocket Breath Coach</title>
+
+    <!-- App Icons for iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://pocketbreathcoach.com/apple-touch-icon.png">
+
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-orange: #FF7A3D;
+            --primary-orange-hover: #FF5100;
+            --text-dark: #1E1810;
+            --text-medium: #575250;
+            --background-light: #F8F5F4;
+            --white: #FFFFFF;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-medium);
+            background: linear-gradient(129deg, #50336d 0%, #2c71e8 50%, #e5e7eb 100%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 100;
+            padding: 20px 0;
+            background: transparent;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .app-download-btn {
+            height: 58px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .app-download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Terms Hero */
+        .terms-hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .terms-hero h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .terms-hero .updated {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+        }
+
+        /* Terms Content */
+        .terms-section {
+            background: var(--white);
+            padding: 70px 0 100px;
+            margin-top: 20px;
+            border-radius: 50px 50px 0 0;
+            position: relative;
+        }
+
+        .terms-content {
+            max-width: 820px;
+            margin: 0 auto;
+            color: var(--text-dark);
+        }
+
+        .terms-content p.intro {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            margin-bottom: 40px;
+        }
+
+        .terms-content ol {
+            list-style: none;
+            counter-reset: section;
+            padding: 0;
+        }
+
+        .terms-content ol > li {
+            counter-increment: section;
+            margin-bottom: 30px;
+            padding-left: 0;
+            position: relative;
+        }
+
+        .terms-content ol > li h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .terms-content ol > li h3::before {
+            content: counter(section) ".";
+            color: var(--primary-orange);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .terms-content ol > li p {
+            color: var(--text-medium);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-content {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .header-buttons {
+                display: none;
+            }
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .terms-hero {
+                padding: 40px 0 30px;
+            }
+
+            .terms-hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .terms-section {
+                padding: 50px 0 70px;
+            }
+
+            .terms-content ol > li h3 {
+                font-size: 1.15rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terms-hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .app-download-btn {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="textlogo.png" alt="Pocket Breath Coach" />
+                    </a>
+                </div>
+
+                <div class="header-buttons">
+                    <a href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank">
+                        <img src="app-store.png" alt="Download on the App Store" class="app-download-btn" />
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach" target="_blank">
+                        <img src="google-play.png" alt="Get it on Google Play" class="app-download-btn" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Terms Hero -->
+    <section class="terms-hero">
+        <div class="container">
+            <h1>Terms of Service</h1>
+            <p class="updated">Last updated: May 2026</p>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="terms-section">
+        <div class="container">
+            <div class="terms-content">
+                <p class="intro">
+                    Thank you for using Pocket Breath Coach, a mobile application ("App") developed by Luke Horton ("Developer," "we," or "us"). By downloading, installing, accessing, or using the App, you ("User" or "you") agree to be bound by the following Terms of Service ("ToS"). Please read these terms carefully before using the App.
+                </p>
+
+                <ol>
+                    <li>
+                        <h3>Acceptance of Terms</h3>
+                        <p>By using the App, you acknowledge and agree to be bound by these ToS, as well as our Privacy Policy, which is incorporated by reference into these ToS.</p>
+                    </li>
+                    <li>
+                        <h3>App Functionality</h3>
+                        <p>The App provides access to certain features and functionalities, including premium features that may require a subscription ("Premium Features"). Users may access the Premium Features by becoming a paying subscriber in accordance with the pricing and subscription terms set forth in the App.</p>
+                    </li>
+                    <li>
+                        <h3>User Accounts</h3>
+                        <p>Some features of the App may require you to create a user account. You are responsible for providing accurate and complete information when creating and maintaining your account. You are also responsible for safeguarding your account credentials and for any activity that occurs under your account. You agree not to share your account credentials with any third party.</p>
+                    </li>
+                    <li>
+                        <h3>Premium Subscriptions</h3>
+                        <p>If you choose to subscribe to the Premium Features, you agree to pay the applicable fees and charges associated with the subscription. Subscription fees are non-refundable, and your subscription will automatically renew unless canceled within 24-hours before the end of the current period. We may change the pricing and subscription terms at any time, but such changes will not affect current subscribers until their current subscription period expires.</p>
+                    </li>
+                    <li>
+                        <h3>Payment and Billing</h3>
+                        <p>All payments for subscriptions are processed through the Google Play Store (for Android devices) or the Apple App Store (for iOS devices). You agree to comply with the terms and conditions of the Google Play Store or Apple App Store, as applicable, regarding payments, billing, and refunds. We are not responsible for any issues related to payments or billing through these app stores.</p>
+                    </li>
+                    <li>
+                        <h3>User Responsibilities</h3>
+                        <p>You agree to use the App in compliance with all applicable laws and regulations, and not to engage in any unauthorized activities, including but not limited to: (a) copying, modifying, or distributing the App or its contents; (b) using the App for any illegal, fraudulent, or harmful purposes; (c) interfering with or disrupting the operation of the App or its servers; (d) attempting to gain unauthorized access to the App or its systems; (e) using the App to harass, abuse, or harm others; (f) uploading or submitting any content that is infringing, offensive, or violates the rights of others; or (g) circumventing any technical measures used to protect the App or its contents.</p>
+                    </li>
+                    <li>
+                        <h3>Privacy and Data Collection</h3>
+                        <p>We may collect and use certain data and information in accordance with our Privacy Policy, which is incorporated by reference into these ToS. By using the App, you consent to our collection and use of your data as described in the Privacy Policy.</p>
+                    </li>
+                    <li>
+                        <h3>Intellectual Property</h3>
+                        <p>The App and its contents, including but not limited to text, graphics, logos, images, audio, video, and software, are owned by the Company or its licensors and are protected by copyright, trademark, and other intellectual property laws. You are granted a limited, non-exclusive, non-transferable, revocable license to use the App and its contents for your personal, non-commercial use only, and subject to these ToS. You may not reproduce, modify, distribute, display, perform, or otherwise use the App or its contents without the prior written consent of the Company.</p>
+                    </li>
+                    <li>
+                        <h3>Termination</h3>
+                        <p>We reserve the right to suspend, terminate, or restrict your access to the App, including your user account and the Premium Features, at any time and for any reason, without notice or liability. You may also terminate your subscription or user account at any time by following the instructions in the App. Termination will not affect any rights or obligations that have accrued prior to termination, including any outstanding fees or charges.</p>
+                    </li>
+                    <li>
+                        <h3>Disclaimer of Warranty and Limitation of Liability</h3>
+                        <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTY.</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Copyright © <span id="current-year"></span> Pocket Breath Coach</p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
