@@ -3,544 +3,906 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pocket Breath Coach</title>
-    
+    <title>Pocket Breath Coach — Guided Breathing App for Sleep, Stress & Focus</title>
+    <meta name="description" content="Guided slow-breathing app for sleep, stress and focus. 260+ sessions, living scenes, 60+ soundscapes and a sleep timer. Free to try — Premium is $6.99/year, a tenth of the price of Calm or Headspace.">
+    <link rel="canonical" href="https://pocketbreathcoach.com/">
+
     <!-- Safari Smart App Banner -->
     <meta name="apple-itunes-app" content="app-id=6444422222, app-argument=https://pocketbreathcoach.com">
-    
+
     <!-- App Icons for iOS -->
     <link rel="apple-touch-icon" sizes="180x180" href="https://pocketbreathcoach.com/apple-touch-icon.png">
-    
+
     <!-- Standard favicon -->
-    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pocketbreathcoach.com/">
-    <meta property="og:title" content="Pocket Breath Coach - Relieve Anxiety With Slow, Rhythmic Breathing">
-    <meta property="og:description" content="Our app makes it easy to incorporate slow breathing exercises into your daily routine. Reduce stress, improve sleep, and enhance focus with guided breathing exercises.">
-    <meta property="og:image" content="https://pocketbreathcoach.com/screenshot1.png">
-    <meta property="og:image:width" content="1080">
-    <meta property="og:image:height" content="1920">
+    <meta property="og:title" content="Pocket Breath Coach — Breathe slower. Feel calmer.">
+    <meta property="og:description" content="260+ guided slow-breathing sessions with living scenes and soundscapes. Fall asleep faster, quiet a racing mind. Premium is $6.99/year — a tenth of the price of Calm.">
+    <meta property="og:image" content="https://pocketbreathcoach.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://pocketbreathcoach.com/">
-    <meta name="twitter:title" content="Pocket Breath Coach - Relieve Anxiety With Slow, Rhythmic Breathing">
-    <meta name="twitter:description" content="Our app makes it easy to incorporate slow breathing exercises into your daily routine. Reduce stress, improve sleep, and enhance focus with guided breathing exercises.">
-    <meta name="twitter:image" content="https://pocketbreathcoach.com/screenshot1.png">
+    <meta name="twitter:title" content="Pocket Breath Coach — Breathe slower. Feel calmer.">
+    <meta name="twitter:description" content="260+ guided slow-breathing sessions with living scenes and soundscapes. Free to try — Premium is $6.99/year.">
+    <meta name="twitter:image" content="https://pocketbreathcoach.com/og-image.png">
 
+    <link rel="preload" as="image" href="/img/session-beach.webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,420;0,9..144,560;1,9..144,420&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Pocket Breath Coach",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "HealthApplication",
+      "description": "Guided slow-breathing app with 260+ sessions, living scenes, soundscapes and a sleep timer. For sleep, stress relief and focus.",
+      "url": "https://pocketbreathcoach.com/",
+      "installUrl": "https://apps.apple.com/us/app/pocket-breath-coach/id6444422222",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "ratingCount": "131"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "0",
+        "highPrice": "6.99",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
     <style>
         :root {
-            --primary-orange: #FF7A3D;
-            --primary-orange-hover: #FF5100;
-            --text-dark: #1E1810;
-            --text-medium: #575250;
-            --background-light: #F8F5F4;
-            --white: #FFFFFF;
-            --black: #000000;
+            --night: #131018;
+            --night-deep: #0C0A11;
+            --panel: #1C1726;
+            --panel-2: #262035;
+            --lavender: #BB86FD;
+            --lavender-soft: #D3B4FE;
+            --cyan: #44CCFF;
+            --gold: #FFC978;
+            --ink: #F2EEF8;
+            --ink-dim: #ABA1BE;
+            --line: rgba(187, 134, 253, 0.16);
+            --line-faint: rgba(242, 238, 248, 0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Lato', sans-serif;
-            line-height: 1.6;
-            color: var(--text-medium);
-            background: linear-gradient(129deg, #50336d 0%, #2c71e8 50%, #e5e7eb 100%);
-            min-height: 100vh;
+            font-family: 'Nunito Sans', system-ui, sans-serif;
+            background: var(--night);
+            color: var(--ink-dim);
+            line-height: 1.65;
+            font-size: 17px;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1.2;
+        h1, h2, h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 560;
+            color: var(--ink);
+            line-height: 1.12;
+            letter-spacing: -0.01em;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        img { max-width: 100%; display: block; }
+        a { color: var(--lavender-soft); }
+
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+        .eyebrow {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--lavender);
+            margin-bottom: 16px;
         }
 
-        /* Header Styles */
-        .header {
-            position: relative;
-            z-index: 100;
-            padding: 20px 0;
-            background: transparent;
+        section { padding: 96px 0; }
+
+        /* ── Aurora backdrop ─────────────────────────────── */
+        .sky {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(52% 38% at 78% -6%, rgba(80, 51, 109, 0.55), transparent 70%),
+                radial-gradient(45% 34% at 12% 4%, rgba(68, 90, 200, 0.28), transparent 70%),
+                radial-gradient(60% 45% at 50% 108%, rgba(41, 27, 62, 0.8), transparent 75%),
+                var(--night);
+        }
+        .sky::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(1.2px 1.2px at 22% 18%, rgba(255,255,255,.5), transparent 100%),
+                radial-gradient(1px 1px at 68% 9%, rgba(255,255,255,.4), transparent 100%),
+                radial-gradient(1.4px 1.4px at 86% 26%, rgba(255,255,255,.35), transparent 100%),
+                radial-gradient(1px 1px at 41% 6%, rgba(255,255,255,.45), transparent 100%),
+                radial-gradient(1.1px 1.1px at 8% 32%, rgba(255,255,255,.3), transparent 100%),
+                radial-gradient(1.3px 1.3px at 55% 22%, rgba(255,255,255,.28), transparent 100%);
+            opacity: .7;
         }
 
+        /* ── Header ──────────────────────────────────────── */
+        .header { padding: 22px 0; }
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 20px;
         }
+        .logo img { height: 44px; width: auto; }
+        .header-buttons { display: flex; gap: 12px; align-items: center; }
+        .store-badge { height: 46px; width: auto; transition: transform .25s ease, opacity .25s ease; }
+        a:hover .store-badge { transform: translateY(-2px); opacity: .92; }
 
-        .logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        .header-buttons {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .app-download-btn {
-            height: 58px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .app-download-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0 80px;
-            text-align: center;
-            position: relative;
-        }
-
+        /* ── Hero ────────────────────────────────────────── */
+        .hero { padding: 56px 0 88px; }
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 60px;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 56px;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
-
-        .hero-text {
-            text-align: left;
-        }
-
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(44px, 6.2vw, 72px);
+            margin-bottom: 22px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 420;
+            color: var(--lavender-soft);
+        }
+        .hero-sub {
+            font-size: 19px;
+            max-width: 34em;
             margin-bottom: 30px;
-            line-height: 1.1;
-            color: var(--white);
         }
-
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.7;
+        .hero-buttons { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+        .hero-microcopy {
+            margin-top: 14px;
+            font-size: 14px;
+            color: var(--ink-dim);
         }
-
-        .hero-buttons {
-            display: none;
-            gap: 20px;
-        }
-
-        .hero-buttons .app-download-btn {
-            height: 70px;
-        }
-
-        /* Phone Mockup */
-        .phone-mockup {
-            position: relative;
+        .rating-row {
             display: flex;
-            justify-content: center;
             align-items: center;
+            gap: 10px;
+            margin: 26px 0 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
         }
+        .stars { color: var(--gold); letter-spacing: 2px; font-size: 16px; }
+        .rating-row span.count { color: var(--ink-dim); font-weight: 400; }
 
-        .phone-frame {
+        .phone-wrap { position: relative; display: flex; justify-content: center; }
+        .phone-glow {
+            position: absolute;
+            inset: -12% -18%;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(187, 134, 253, 0.22), transparent 70%);
+            filter: blur(8px);
+            z-index: 0;
+        }
+        .phone {
+            position: relative;
+            z-index: 1;
+            width: min(340px, 78vw);
+            border-radius: 48px;
+            padding: 11px;
+            background: linear-gradient(160deg, #241e31, #0d0a13 60%);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow:
+                0 40px 80px -24px rgba(0, 0, 0, 0.65),
+                0 0 0 1px rgba(0, 0, 0, 0.4);
+        }
+        .phone img { border-radius: 38px; width: 100%; height: auto; }
+        .phone.tilt-l { transform: rotate(-3deg); }
+        .phone.tilt-r { transform: rotate(3deg); }
+
+        /* ── Breather (signature) ────────────────────────── */
+        .breather {
+            text-align: center;
+            padding: 110px 0;
+            position: relative;
+        }
+        .breather h2 { font-size: clamp(30px, 4vw, 42px); margin-bottom: 14px; }
+        .breather-sub { max-width: 36em; margin: 0 auto 56px; }
+        .breath-stage {
             position: relative;
             width: 280px;
-            height: 560px;
-            border-radius: 40px;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .phone-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            background: var(--white);
-            padding: 100px 0;
-            margin-top: -50px;
-            border-radius: 50px 50px 0 0;
-            position: relative;
-        }
-
-        .benefits-content {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 80px;
-            align-items: flex-start;
-            max-width: 1200px;
+            height: 280px;
             margin: 0 auto;
-        }
-
-        .benefits-phone {
-            position: relative;
-        }
-
-        .benefits-phone .phone-frame {
-            width: 260px;
-            height: 520px;
-        }
-
-        .benefits-text {
-            padding-top: 20px;
-        }
-
-        .benefits-label {
-            font-size: 0.9rem;
-            color: var(--primary-orange);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 20px;
-        }
-
-        .benefits h2 {
-            font-size: 2.5rem;
-            color: var(--text-dark);
-            margin-bottom: 25px;
-        }
-
-        .benefits-description {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: var(--text-medium);
-        }
-
-        .benefits-list {
-            list-style: none;
-        }
-
-        .benefits-list li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-
-        .check-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--primary-orange);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
+        }
+        .breath-ring, .breath-ring::before, .breath-ring::after {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+        }
+        .breath-ring {
+            animation: breathe 10s ease-in-out infinite;
+            will-change: transform;
+        }
+        .breath-ring::before {
+            content: "";
+            background: radial-gradient(circle, rgba(187, 134, 253, 0.28) 0%, rgba(187, 134, 253, 0.06) 58%, transparent 72%);
+        }
+        .breath-ring::after {
+            content: "";
+            border: 2px solid rgba(211, 180, 254, 0.85);
+            box-shadow:
+                0 0 34px rgba(187, 134, 253, 0.45),
+                inset 0 0 26px rgba(187, 134, 253, 0.28);
+        }
+        .breath-cue {
+            position: relative;
+            z-index: 2;
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-size: 24px;
+            color: var(--ink);
+        }
+        @keyframes breathe {
+            0%   { transform: scale(0.58); }
+            40%  { transform: scale(1); }
+            100% { transform: scale(0.58); }
+        }
+        .breather-note { margin-top: 52px; font-size: 15px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .breath-ring { animation: none; transform: scale(0.8); }
+            html { scroll-behavior: auto; }
         }
 
-        .check-icon::after {
-            content: '✓';
-            color: white;
+        /* ── Quotes ──────────────────────────────────────── */
+        .quotes h2 { text-align: center; font-size: clamp(30px, 4vw, 42px); margin-bottom: 12px; }
+        .quotes-sub { text-align: center; margin-bottom: 52px; }
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .quote-card {
+            background: var(--panel);
+            border: 1px solid var(--line-faint);
+            border-radius: 20px;
+            padding: 28px;
+        }
+        .quote-card .stars { display: block; margin-bottom: 14px; }
+        .quote-card blockquote {
+            color: var(--ink);
+            font-size: 16.5px;
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+        .quote-card cite {
+            font-style: normal;
             font-size: 14px;
-            font-weight: bold;
+            color: var(--ink-dim);
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-buttons {
-                display: flex;
-            }
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .hero-text {
-                text-align: center;
-            }
-
-            .benefits-content {
-                grid-template-columns: 1fr;
-                gap: 50px;
-                text-align: center;
-            }
-
-            .benefits-phone {
-                display: flex;
-                justify-content: center;
-            }
-            .header-buttons {
-                display: none;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .header-content {
-                justify-content: center;
-                text-align: center;
-            }
-            .benefits-list {
-                padding-left: 25%;
-            }
+        /* ── Features / benefits ─────────────────────────── */
+        .benefits .section-head { max-width: 46em; margin-bottom: 56px; }
+        .benefits h2 { font-size: clamp(32px, 4.4vw, 48px); margin-bottom: 16px; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .hero {
-                padding: 60px 0 80px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .phone-frame {
-                width: 240px;
-                height: 480px;
-            }
-
-            .benefits-phone .phone-frame {
-                width: 220px;
-                height: 440px;
-            }
-
-            .benefits h2 {
-                font-size: 2rem;
-            }
-
-            .benefits {
-                padding: 60px 0;
-            }
-            .benefits-list {
-                padding-left: 15%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-            }
-
-            .app-download-btn {
-                height: 50px;
-            }
-
-            .hero-buttons .app-download-btn {
-                height: 60px;
-            }
-
-            .phone-frame {
-                width: 200px;
-                height: 400px;
-            }
-
-            .benefits-phone .phone-frame {
-                width: 180px;
-                height: 360px;
-            }
-        }
-
-        /* Mobile Navigation */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .header-buttons {
-                display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: block;
-            }
-        }
-        .benefits-list-item {
-            text-align: left;
-        }
-
-        /* Footer Styles */
-        .footer {
-            background: var(--white);
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .footer-content {
-            color: var(--text-medium);
-            font-size: 0.9rem;
-        }
-
-        .footer-links {
-            margin-top: 10px;
+        .gallery-card {
+            background: var(--panel);
+            border: 1px solid var(--line-faint);
+            border-radius: 24px;
+            padding: 26px 26px 0;
             display: flex;
+            flex-direction: column;
+            gap: 8px;
+            overflow: hidden;
+        }
+        .gallery-card h3 { font-size: 21px; }
+        .gallery-card p { font-size: 15px; }
+        .gallery-card .shot {
+            margin: 20px -4px 0;
+            border-radius: 22px 22px 0 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-bottom: none;
+            box-shadow: 0 -18px 50px -20px rgba(187, 134, 253, 0.35);
+        }
+        .gallery-card .shot img { width: 100%; height: auto; aspect-ratio: 640 / 900; object-fit: cover; object-position: top; }
+        .more-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .cell {
+            background: var(--panel);
+            border: 1px solid var(--line-faint);
+            border-radius: 24px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .cell h3 { font-size: 20px; margin-bottom: 2px; }
+        .cell p { font-size: 15px; }
+        .cell .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(187, 134, 253, 0.12);
+            color: var(--lavender-soft);
+            margin-bottom: 12px;
+        }
+        .cell .icon svg { width: 21px; height: 21px; }
+
+        /* ── Pricing ─────────────────────────────────────── */
+        .pricing .section-head { text-align: center; max-width: 44em; margin: 0 auto 56px; }
+        .pricing h2 { font-size: clamp(32px, 4.4vw, 48px); margin-bottom: 16px; }
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 420px));
             justify-content: center;
             gap: 20px;
+            margin-bottom: 80px;
+        }
+        .plan {
+            background: var(--panel);
+            border: 1px solid var(--line-faint);
+            border-radius: 24px;
+            padding: 34px;
+        }
+        .plan.premium {
+            background: linear-gradient(170deg, #2B2140, var(--panel) 65%);
+            border-color: var(--line);
+            position: relative;
+        }
+        .plan .plan-name {
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            margin-bottom: 12px;
+        }
+        .plan.premium .plan-name { color: var(--lavender); }
+        .plan .price {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 42px;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .plan .price small { font-size: 17px; color: var(--ink-dim); font-family: 'Nunito Sans', sans-serif; }
+        .plan .price-alt { font-size: 14px; margin-bottom: 22px; }
+        .save-pill {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(187, 134, 253, 0.16);
+            color: var(--lavender-soft);
+            font-size: 12.5px;
+            font-weight: 800;
+            letter-spacing: .06em;
+            padding: 5px 12px;
+            border-radius: 100px;
+        }
+        .plan ul { list-style: none; }
+        .plan li {
+            padding: 9px 0 9px 30px;
+            position: relative;
+            font-size: 15.5px;
+            border-bottom: 1px solid var(--line-faint);
+        }
+        .plan li:last-child { border-bottom: none; }
+        .plan li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(187, 134, 253, 0.18) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23D3B4FE" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') center/9px no-repeat;
+        }
+
+        .compare-wrap { overflow-x: auto; }
+        .compare {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px;
+        }
+        .compare caption {
+            caption-side: top;
+            text-align: left;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(24px, 3vw, 32px);
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+        .compare-note { font-size: 14px; margin-bottom: 26px; }
+        .compare th, .compare td {
+            text-align: left;
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--line-faint);
+            font-size: 15.5px;
+        }
+        .compare thead th {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: var(--ink-dim);
+        }
+        .compare td:first-child { color: var(--ink); font-weight: 600; }
+        .compare .you {
+            background: linear-gradient(90deg, rgba(187, 134, 253, 0.1), rgba(187, 134, 253, 0.02));
+        }
+        .compare .you td { border-bottom-color: var(--line); }
+        .compare .you td:first-child { color: var(--lavender-soft); }
+        .compare .price-cell { font-family: 'Fraunces', Georgia, serif; font-size: 19px; color: var(--ink); }
+        .footnote { font-size: 13px; margin-top: 18px; }
+
+        /* ── FAQ ─────────────────────────────────────────── */
+        .faq .section-head { text-align: center; margin-bottom: 48px; }
+        .faq h2 { font-size: clamp(32px, 4.4vw, 48px); }
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-item {
+            border-bottom: 1px solid var(--line-faint);
+        }
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 22px 4px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: "+";
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 26px;
+            color: var(--lavender);
+            transition: transform .25s ease;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item .answer { padding: 0 4px 24px; max-width: 60em; }
+        .faq-more { text-align: center; margin-top: 36px; font-size: 16px; }
+
+        /* ── Final CTA ───────────────────────────────────── */
+        .final-cta {
+            text-align: center;
+            padding: 120px 0 130px;
+            position: relative;
+            overflow: hidden;
+        }
+        .final-cta::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -340px;
+            transform: translateX(-50%);
+            width: 720px;
+            height: 720px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(187, 134, 253, 0.22) 0%, rgba(68, 204, 255, 0.07) 45%, transparent 68%);
+            pointer-events: none;
+        }
+        .cta-phone { display: flex; justify-content: center; margin-bottom: 40px; }
+        .cta-phone .phone { width: min(240px, 60vw); border-radius: 36px; padding: 8px; }
+        .cta-phone .phone img { border-radius: 29px; }
+        .final-cta h2 {
+            font-size: clamp(34px, 5vw, 56px);
+            max-width: 15em;
+            margin: 0 auto 18px;
+        }
+        .final-cta h2 em { font-style: italic; font-weight: 420; color: var(--lavender-soft); }
+        .final-cta p { max-width: 34em; margin: 0 auto 34px; }
+        .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+        /* ── Footer ──────────────────────────────────────── */
+        .footer {
+            border-top: 1px solid var(--line-faint);
+            padding: 40px 0 48px;
+            font-size: 14.5px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
             flex-wrap: wrap;
         }
+        .footer nav { display: flex; gap: 24px; flex-wrap: wrap; }
+        .footer a { color: var(--ink-dim); text-decoration: none; }
+        .footer a:hover { color: var(--lavender-soft); }
 
-        .footer-links a {
-            color: var(--primary-orange);
-            text-decoration: none;
+        /* ── Reveal on scroll ────────────────────────────── */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
         }
 
-        .footer-links a:hover {
-            text-decoration: underline;
+        /* ── Responsive ──────────────────────────────────── */
+        @media (max-width: 960px) {
+            section { padding: 72px 0; }
+            .hero-content { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+            .hero-sub { margin-left: auto; margin-right: auto; }
+            .hero-buttons, .rating-row { justify-content: center; }
+            .quote-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+            .gallery { grid-template-columns: 1fr 1fr; }
+            .plans { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; margin-bottom: 72px; }
+        }
+        @media (max-width: 640px) {
+            .header-buttons { display: none; }
+            .gallery { grid-template-columns: 1fr; }
+            .phone-glow { inset: 0; }
+            .store-badge { height: 48px; }
+            .breath-stage { width: 230px; height: 230px; }
+            body { font-size: 16px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <div class="sky" aria-hidden="true"></div>
+
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="textlogo.png" alt="Pocket Breath Coach" />
-                </div>
-                
-                <div class="header-buttons">
-                    <a href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank">
-                        <img src="app-store.png" alt="Download on the App Store" class="app-download-btn" />
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach" target="_blank">
-                        <img src="google-play.png" alt="Get it on Google Play" class="app-download-btn" />
-                    </a>
-                </div>
-                
+        <div class="container header-content">
+            <a class="logo" href="/" aria-label="Pocket Breath Coach home">
+                <img src="/textlogo.png" alt="Pocket Breath Coach" width="220" height="44">
+            </a>
+            <div class="header-buttons">
+                <a href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank" rel="noopener">
+                    <img class="store-badge" src="/app-store.png" alt="Download on the App Store" loading="lazy">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach" target="_blank" rel="noopener">
+                    <img class="store-badge" src="/google-play.png" alt="Get it on Google Play" loading="lazy">
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Relieve Anxiety With Slow, Rhythmic Breathing</h1>
-                    <p class="hero-description">
-                        Our app, &quot;Pocket Breath Coach,&quot; makes it easy to incorporate slow breathing exercises into your daily routine. With guided exercises, progress tracking, and customizable settings, you'll have everything you need to start reaping the benefits of slow breathing.
-                    </p>
-                    
+    <main>
+        <!-- ── Hero ── -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div>
+                    <p class="eyebrow">For iPhone &amp; Android</p>
+                    <h1>Breathe slower.<br><em>Feel calmer.</em></h1>
+                    <p class="hero-sub">Pocket Breath Coach guides you through proven slow-breathing techniques — box breathing, 4-7-8, long gentle exhales — wrapped in living scenes and soundscapes you'll actually look forward to. Fall asleep faster, quiet a racing mind, find your focus.</p>
                     <div class="hero-buttons">
-                        <a href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank">
-                            <img src="app-store.png" alt="Download on the App Store" class="app-download-btn" />
+                        <a href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank" rel="noopener">
+                            <img class="store-badge" src="/app-store.png" alt="Download on the App Store" width="159" height="46">
                         </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach" target="_blank">
-                            <img src="google-play.png" alt="Get it on Google Play" class="app-download-btn" />
+                        <a href="https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach" target="_blank" rel="noopener">
+                            <img class="store-badge" src="/google-play.png" alt="Get it on Google Play" width="155" height="46">
                         </a>
                     </div>
+                    <p class="hero-microcopy">Free to try — no account needed. Premium from $6.99/year.</p>
+                    <p class="rating-row"><span class="stars" aria-hidden="true">★★★★★</span> 4.5 on the App&nbsp;Store <span class="count">· 131 ratings</span></p>
                 </div>
-                
-                <div class="phone-mockup">
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <img src="screenshot1.png" alt="Pocket Breath Coach App Screenshot" />
-                        </div>
+                <div class="phone-wrap">
+                    <div class="phone-glow" aria-hidden="true"></div>
+                    <div class="phone">
+                        <img src="/img/session-beach.webp" alt="A guided breathing session in Pocket Breath Coach: a glowing orb expands and contracts over a beach at sunset" width="720" height="1561" fetchpriority="high">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits">
-        <div class="container">
-            <div class="benefits-content">
-                <div class="benefits-phone">
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <img src="screenshot2.png" alt="App showing recommended breathing exercises" />
-                        </div>
-                    </div>
+        <!-- ── Signature: live breathing demo ── -->
+        <section class="breather" aria-label="Interactive breathing exercise">
+            <div class="container">
+                <p class="eyebrow">Try it right now</p>
+                <h2>Take one slow breath with us</h2>
+                <p class="breather-sub">Follow the ring. In through your nose as it grows&hellip; out slowly as it settles. That's the whole idea — a few minutes of this tells your nervous system it's safe to relax.</p>
+                <div class="breath-stage">
+                    <div class="breath-ring" aria-hidden="true"></div>
+                    <p class="breath-cue" id="breathCue" aria-live="off">Breathe in</p>
                 </div>
-                
-                <div class="benefits-text">
-                    <div class="benefits-label">Benefits</div>
-                    <h2>The Benefits of Slow, Rhythmic Breathing</h2>
-                    <p class="benefits-description">
-                        By taking just a few minutes each day to do a slow, deep breathing exercise, you can significantly reduce stress and improve your overall sense of well-being.
-                    </p>
-                    <p class="benefits-description">
-                        <strong>Some of the benefits of slow breathing exercises include:</strong>
-                    </p>
-                    
-                    <ul class="benefits-list">
-                        <li>
-                            <span class="check-icon"></span>
-                            <strong class="benefits-list-item">Reduced stress and anxiety</strong>
-                        </li>
-                        <li>
-                            <span class="check-icon"></span>
-                            <strong class="benefits-list-item">Improved sleep quality</strong>
-                        </li>
-                        <li>
-                            <span class="check-icon"></span>
-                            <strong class="benefits-list-item">Increased relaxation</strong>
-                        </li>
-                        <li>
-                            <span class="check-icon"></span>
-                            <strong class="benefits-list-item">Enhanced focus and concentration</strong>
-                        </li>
-                    </ul>
+                <p class="breather-note">In the app, every session pairs this rhythm with sound — and keeps playing with your phone locked.</p>
+            </div>
+        </section>
+
+        <!-- ── Social proof ── -->
+        <section class="quotes">
+            <div class="container">
+                <h2 class="reveal">People sleep better with it</h2>
+                <p class="quotes-sub reveal">From App&nbsp;Store reviews.</p>
+                <div class="quote-grid">
+                    <figure class="quote-card reveal">
+                        <span class="stars" aria-hidden="true">★★★★★</span>
+                        <blockquote>&ldquo;I started using this app a week ago and I noticed a change within 24 hours&hellip; completely calm, sleeping better.&rdquo;</blockquote>
+                        <cite>— NucleusGirl, App Store</cite>
+                    </figure>
+                    <figure class="quote-card reveal">
+                        <span class="stars" aria-hidden="true">★★★★★</span>
+                        <blockquote>&ldquo;Pocket Breath Coach is the clear winner&hellip; the ability to save custom patterns makes it quicker.&rdquo;</blockquote>
+                        <cite>— DPDorn, App Store</cite>
+                    </figure>
+                    <figure class="quote-card reveal">
+                        <span class="stars" aria-hidden="true">★★★★★</span>
+                        <blockquote>&ldquo;The ability to modify the exercises to fit your needs can be the difference between keeping up or burning out.&rdquo;</blockquote>
+                        <cite>— Steeeeeeeeve Loblaw, App Store</cite>
+                    </figure>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
+        <!-- ── Features ── -->
+        <section class="benefits">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">What's inside</p>
+                    <h2>Everything you need to slow down</h2>
+                    <p>No courses to complete, no streaks to maintain. Open the app, pick a session, breathe. Every detail — the pacing, the scene, the sound — bends to how you want to breathe tonight.</p>
+                </div>
+                <div class="gallery">
+                    <div class="gallery-card reveal">
+                        <h3>260+ guided sessions</h3>
+                        <p>Curated rows for sleep, daytime calm and focus — or build your own.</p>
+                        <div class="shot"><img src="/img/discover.webp" alt="The Discover screen with rows of curated breathing sessions" loading="lazy" width="640" height="1387"></div>
+                    </div>
+                    <div class="gallery-card reveal">
+                        <h3>50+ living scenes</h3>
+                        <p>Filmed beaches, auroras, rain on glass — scenes that move with you.</p>
+                        <div class="shot"><img src="/img/scenes.webp" alt="The Background Scenery picker with filmed and animated scenes" loading="lazy" width="640" height="812"></div>
+                    </div>
+                    <div class="gallery-card reveal">
+                        <h3>60+ soundscapes</h3>
+                        <p>Crystal bowls, fireside guitar, deep-sea calm — synced to your breath.</p>
+                        <div class="shot"><img src="/img/sounds.webp" alt="The Sounds picker with themes like Coastal, Forest and Night" loading="lazy" width="640" height="812"></div>
+                    </div>
+                    <div class="gallery-card reveal">
+                        <h3>Your pace, precisely</h3>
+                        <p>Tune inhale, exhale and holds to a tenth of a second.</p>
+                        <div class="shot"><img src="/img/pattern.webp" alt="The Breathing Pattern editor with sliders for inhale, holds and exhale" loading="lazy" width="640" height="812"></div>
+                    </div>
+                </div>
+                <div class="more-grid">
+                    <div class="cell reveal">
+                        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h9a3 3 0 1 0-3-3"/><path d="M3 12h13a3 3 0 1 1-3 3"/><path d="M5 16h6a3 3 0 1 1-3 3"/></svg></div>
+                        <h3>Proven techniques</h3>
+                        <p>Box breathing, 4-7-8, extended exhales and pranayama-inspired ratios — the patterns clinicians and athletes actually use.</p>
+                    </div>
+                    <div class="cell reveal">
+                        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></div>
+                        <h3>Made for sleep</h3>
+                        <p>Set the sleep timer and drift off — sound and light fade out gently, then the session ends itself.</p>
+                    </div>
+                    <div class="cell reveal">
+                        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+                        <h3>Gentle reminders</h3>
+                        <p>A morning reset, a pre-meeting minute, a wind-down at ten — reminders open straight into your chosen session.</p>
+                    </div>
+                    <div class="cell reveal">
+                        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <h3>Private by design</h3>
+                        <p>No ads. No trackers. No analytics SDKs watching how you relax. Your practice stays on your phone.</p>
+                    </div>
+                    <div class="cell reveal">
+                        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg></div>
+                        <h3>Works anywhere</h3>
+                        <p>Sessions play offline — on the red-eye, in the waiting room, in a tent. Favorites sync across devices when you sign in.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Pricing ── -->
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">Pricing</p>
+                    <h2>A year of calm for less than one month of Calm</h2>
+                    <p>Most wellness apps charge $60&ndash;70 a year. We think slow breathing should cost about as much as a cup of coffee — annually.</p>
+                </div>
+
+                <div class="plans">
+                    <div class="plan reveal">
+                        <p class="plan-name">Free</p>
+                        <p class="price">$0</p>
+                        <p class="price-alt">Forever. No account, no card.</p>
+                        <ul>
+                            <li>7 complete guided sessions</li>
+                            <li>Fully adjustable breathing patterns</li>
+                            <li>A starter set of sounds, scenes &amp; animations</li>
+                            <li>Sleep timer, reminders &amp; favorites</li>
+                            <li>No session limits, ever</li>
+                        </ul>
+                    </div>
+                    <div class="plan premium reveal">
+                        <span class="save-pill">Save 41% yearly</span>
+                        <p class="plan-name">Premium</p>
+                        <p class="price">$6.99 <small>/ year</small></p>
+                        <p class="price-alt">or $0.99 / month. Cancel anytime.</p>
+                        <ul>
+                            <li>All 260+ guided sessions</li>
+                            <li>All 50+ living scenes</li>
+                            <li>All 60+ soundscapes</li>
+                            <li>All 18 breathing animations</li>
+                            <li>Premium audio available offline</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="compare-wrap reveal">
+                    <table class="compare">
+                        <caption>How that compares</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">App</th>
+                                <th scope="col">Price per year</th>
+                                <th scope="col">Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="you">
+                                <td>Pocket Breath Coach</td>
+                                <td class="price-cell">$6.99</td>
+                                <td>Slow breathing, done beautifully</td>
+                            </tr>
+                            <tr>
+                                <td>Breathwrk</td>
+                                <td class="price-cell">$59.99</td>
+                                <td>Breathing exercises</td>
+                            </tr>
+                            <tr>
+                                <td>Calm</td>
+                                <td class="price-cell">$69.99</td>
+                                <td>Meditation &amp; sleep stories</td>
+                            </tr>
+                            <tr>
+                                <td>Headspace</td>
+                                <td class="price-cell">$69.99</td>
+                                <td>Meditation courses</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="footnote">Published US prices as of July 2026, from each app's website or store listing. Each app is great at what it does — ours is doing one thing well, for a tenth of the price.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FAQ ── -->
+        <section class="faq">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">Questions</p>
+                    <h2>Fair questions, honest answers</h2>
+                </div>
+                <div class="faq-list reveal">
+                    <details class="faq-item">
+                        <summary>Is Pocket Breath Coach really free?</summary>
+                        <div class="answer"><p>Yes — the free version is a real app, not a teaser. You get seven complete guided sessions, fully adjustable breathing patterns, reminders, favorites and the sleep timer, with no time limits and no account required. Premium unlocks the full library of sessions, scenes and sounds.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How is it different from Calm or Headspace?</summary>
+                        <div class="answer"><p>Calm and Headspace are broad meditation platforms built around courses and narrated content. Pocket Breath Coach does one thing: paced slow breathing, with precise control over your rhythm and visuals and sound that follow it. There's nothing to keep up with — and Premium costs $6.99 a year instead of $69.99.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Which breathing techniques are included?</summary>
+                        <div class="answer"><p>Box breathing, 4-7-8, even 1:1 rhythms, calming 4:6 and 1:2 extended-exhale ratios, and pranayama-inspired patterns — over 260 preset variations. Every preset is adjustable, down to a tenth of a second per phase, and you can save your own.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can it help me fall asleep?</summary>
+                        <div class="answer"><p>Sleep is what the app is best at. Long-exhale sessions slow things down, night scenes keep the light low, and the sleep timer fades the sound out and ends the session after you've drifted off. Audio keeps playing with the screen locked.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Does it work offline?</summary>
+                        <div class="answer"><p>Yes. Free sessions work entirely offline, and Premium lets you download the full sound library to your phone. Airplane mode is arguably the best way to use it.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What do you do with my data?</summary>
+                        <div class="answer"><p>As little as possible. There are no ads, no third-party trackers and no analytics — we deliberately removed them. Your favorites and history stay on your device unless you create an account to sync them. See the <a href="/privacy/">privacy policy</a>.</p></div>
+                    </details>
+                </div>
+                <p class="faq-more"><a href="/faq/">More questions? Read the full FAQ &rarr;</a></p>
+            </div>
+        </section>
+
+        <!-- ── Final CTA ── -->
+        <section class="final-cta">
+            <div class="container">
+                <div class="cta-phone reveal">
+                    <div class="phone">
+                        <img src="/img/session-northern.webp" alt="A night session under northern lights with an Exhale cue" loading="lazy" width="640" height="1387">
+                    </div>
+                </div>
+                <h2 class="reveal">Tonight, fall asleep <em>breathing slowly</em></h2>
+                <p class="reveal">Download free. Try a session with your lights off. If it helps — and we think it will — Premium is waiting at a price that won't stress you out.</p>
+                <div class="cta-buttons reveal">
+                    <a href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank" rel="noopener">
+                        <img class="store-badge" src="/app-store.png" alt="Download on the App Store" loading="lazy">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach" target="_blank" rel="noopener">
+                        <img class="store-badge" src="/google-play.png" alt="Get it on Google Play" loading="lazy">
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>Copyright © <span id="current-year"></span> Pocket Breath Coach</p>
-                <div class="footer-links">
-                    <a href="/terms/">Terms of Service</a>
-                    <a href="/privacy/">Privacy Policy</a>
-                </div>
-            </div>
+        <div class="container footer-content">
+            <p>&copy; <span id="year">2026</span> Pocket Breath Coach</p>
+            <nav aria-label="Footer">
+                <a href="/faq/">FAQ</a>
+                <a href="/privacy/">Privacy</a>
+                <a href="/terms/">Terms</a>
+                <a href="/delete-account/">Delete account</a>
+                <a href="mailto:luke@pocketbreathcoach.com">Contact</a>
+            </nav>
         </div>
     </footer>
 
     <script>
-        // Set current year dynamically
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Breathing cue text, synced to the 10s ring animation (4s in, 6s out).
+        (function () {
+            var cue = document.getElementById('breathCue');
+            if (!cue) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                cue.textContent = 'In for 4 · out for 6';
+                return;
+            }
+            var start = performance.now();
+            function tick(now) {
+                var t = ((now - start) / 1000) % 10;
+                cue.textContent = t < 4 ? 'Breathe in' : 'Breathe out';
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+
+        // Scroll reveals.
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('in'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -8% 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
     </script>
 </body>
 </html>
