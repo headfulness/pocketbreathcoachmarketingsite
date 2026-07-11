@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#131018">
     <title>Pocket Breath Coach</title>
     
     <!-- Safari Smart App Banner -->
@@ -37,15 +36,11 @@
     
     <style>
         :root {
-            /* Palette from the app's dark theme (seed #BB86FD) */
-            --night: #131018;
-            --panel: #1C1726;
-            --panel-2: #262035;
-            --lavender: #BB86FD;
-            --lavender-soft: #D3B4FE;
-            --ink: #F2EEF8;
-            --ink-dim: #ABA1BE;
-            --line-faint: rgba(242, 238, 248, 0.08);
+            --primary-orange: #FF7A3D;
+            --primary-orange-hover: #FF5100;
+            --text-dark: #1E1810;
+            --text-medium: #575250;
+            --background-light: #F8F5F4;
             --white: #FFFFFF;
             --black: #000000;
         }
@@ -59,18 +54,15 @@
         body {
             font-family: 'Lato', sans-serif;
             line-height: 1.6;
-            color: var(--ink-dim);
-            background:
-                radial-gradient(52% 38% at 78% -6%, rgba(80, 51, 109, 0.55), transparent 70%),
-                radial-gradient(45% 34% at 12% 4%, rgba(68, 90, 200, 0.28), transparent 70%),
-                var(--night);
+            color: var(--text-medium);
+            background: linear-gradient(129deg, #50336d 0%, #2c71e8 50%, #e5e7eb 100%);
             min-height: 100vh;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            color: var(--ink);
+            color: var(--white);
             line-height: 1.2;
         }
 
@@ -141,13 +133,13 @@
             font-size: 3.5rem;
             margin-bottom: 30px;
             line-height: 1.1;
-            color: var(--ink);
+            color: var(--white);
         }
 
         .hero-description {
             font-size: 1.1rem;
             margin-bottom: 40px;
-            color: var(--ink-dim);
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.7;
         }
 
@@ -195,7 +187,7 @@
 
         /* Benefits Section */
         .benefits {
-            background: var(--panel);
+            background: var(--white);
             padding: 100px 0;
             margin-top: -50px;
             border-radius: 50px 50px 0 0;
@@ -258,10 +250,10 @@
             transform: translateY(-50%);
             width: 38px;
             height: 38px;
-            border: 1px solid var(--line-faint);
+            border: none;
             border-radius: 50%;
-            background: var(--panel-2);
-            color: var(--lavender-soft);
+            background: var(--white);
+            color: var(--primary-orange);
             font-size: 1.6rem;
             line-height: 1;
             cursor: pointer;
@@ -275,8 +267,8 @@
         }
 
         .carousel-btn:hover {
-            background: var(--lavender);
-            color: var(--night);
+            background: var(--primary-orange);
+            color: var(--white);
             transform: translateY(-50%) scale(1.08);
         }
 
@@ -300,14 +292,14 @@
             height: 9px;
             border: none;
             border-radius: 50%;
-            background: #3B3448;
+            background: #d8d3d0;
             cursor: pointer;
             padding: 0;
             transition: background 0.2s ease, transform 0.2s ease;
         }
 
         .carousel-dot.active {
-            background: var(--lavender);
+            background: var(--primary-orange);
             transform: scale(1.25);
         }
 
@@ -317,7 +309,7 @@
 
         .benefits-label {
             font-size: 0.9rem;
-            color: var(--lavender);
+            color: var(--primary-orange);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -326,14 +318,14 @@
 
         .benefits h2 {
             font-size: 2.5rem;
-            color: var(--ink);
+            color: var(--text-dark);
             margin-bottom: 25px;
         }
 
         .benefits-description {
             font-size: 1.1rem;
             margin-bottom: 30px;
-            color: var(--ink-dim);
+            color: var(--text-medium);
         }
 
         .benefits-list {
@@ -345,13 +337,13 @@
             align-items: center;
             margin-bottom: 20px;
             font-size: 1.1rem;
-            color: var(--ink);
+            color: var(--text-dark);
         }
 
         .check-icon {
             width: 24px;
             height: 24px;
-            background: rgba(187, 134, 253, 0.18);
+            background: var(--primary-orange);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -362,7 +354,7 @@
 
         .check-icon::after {
             content: '✓';
-            color: var(--lavender-soft);
+            color: white;
             font-size: 14px;
             font-weight: bold;
         }
@@ -507,14 +499,14 @@
 
         /* Footer Styles */
         .footer {
-            background: var(--night);
+            background: var(--white);
             padding: 40px 0;
             text-align: center;
-            border-top: 1px solid var(--line-faint);
+            border-top: 1px solid #e5e7eb;
         }
 
         .footer-content {
-            color: var(--ink-dim);
+            color: var(--text-medium);
             font-size: 0.9rem;
         }
 
@@ -527,7 +519,7 @@
         }
 
         .footer-links a {
-            color: var(--lavender-soft);
+            color: var(--primary-orange);
             text-decoration: none;
         }
 
