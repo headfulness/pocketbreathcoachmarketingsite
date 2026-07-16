@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Pocket Breath Coach</title>
+    <meta name="robots" content="noindex">
+
+    <!-- Safari Smart App Banner (renders in real Safari; not in social in-app browsers) -->
+    <meta name="apple-itunes-app" content="app-id=6444422222, app-argument=https://pocketbreathcoach.com/go/">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://pocketbreathcoach.com/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="../logo.ico">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pocketbreathcoach.com/go/">
+    <meta property="og:title" content="Pocket Breath Coach — Guided Breathing for Stress & Sleep">
+    <meta property="og:description" content="The app behind the breathing videos. 260+ guided exercises, custom rhythms, calming scenes. Works offline.">
+    <meta property="og:image" content="https://pocketbreathcoach.com/screenshot1.png">
+
+    <style>
+        :root {
+            --primary-orange: #FF7A3D;
+            --primary-orange-hover: #FF5100;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(160deg, #50336d 0%, #2c71e8 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+        }
+        .card { max-width: 420px; width: 100%; }
+        .logo { width: 84px; height: 84px; border-radius: 20px; margin-bottom: 18px; }
+        h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.25; margin-bottom: 10px; }
+        p.sub { font-size: 1.02rem; opacity: 0.92; line-height: 1.5; margin-bottom: 26px; }
+        .cta {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            padding: 16px 34px;
+            border-radius: 14px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.28);
+            transition: background 0.15s ease;
+        }
+        .cta:hover { background: var(--primary-orange-hover); }
+        .trust { margin-top: 22px; font-size: 0.88rem; opacity: 0.8; }
+        .badges { display: none; margin-top: 8px; }
+        .badges img { height: 52px; margin: 6px; }
+        .qr-block { display: none; margin-top: 26px; }
+        .qr-block img {
+            width: 168px; height: 168px; border-radius: 12px;
+            background: #fff; padding: 8px;
+        }
+        .qr-block p { margin-top: 10px; font-size: 0.95rem; opacity: 0.9; }
+        body.desktop .cta { display: none; }
+        body.desktop .badges, body.desktop .qr-block { display: block; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img class="logo" src="../apple-touch-icon.png" alt="Pocket Breath Coach">
+        <h1>Breathe like the videos — anytime, anywhere</h1>
+        <p class="sub">260+ guided breathing exercises. Set your own rhythm, pick calming scenes and sounds, and let it coach you with the screen off. Works offline.</p>
+
+        <a id="cta" class="cta" href="https://pocketbreathcoach.com/">Get the app</a>
+
+        <div class="badges">
+            <a id="ios-badge" href="#"><img src="../app-store.png" alt="Download on the App Store"></a>
+            <a id="android-badge" href="#"><img src="../google-play.png" alt="Get it on Google Play"></a>
+        </div>
+
+        <div class="qr-block">
+            <img src="../img/qr-get-app.png" alt="QR code — scan with your phone to get the app">
+            <p>On your computer? Scan with your phone.</p>
+        </div>
+
+        <p class="trust">Free to try &nbsp;·&nbsp; 260+ exercises &nbsp;·&nbsp; Works offline</p>
+    </div>
+
+    <script>
+        (function () {
+            // Analytics IDs — leave empty to keep tracking disabled.
+            var META_PIXEL_ID = '';
+            var GA4_ID = '';
+
+            // Campaign slug arrives from the go.pocketbreathcoach.com redirector.
+            var slug = 'direct';
+            try {
+                var m = new URLSearchParams(location.search).get('c');
+                if (m && /^[a-z0-9-]{1,64}$/.test(m)) slug = m;
+            } catch (e) { /* ancient browser: keep 'direct' */ }
+
+            var APPLE_PT = ''; // App Store Connect provider token — fill alongside redirector's.
+            var iosUrl = 'https://apps.apple.com/us/app/pocket-breath-coach/id6444422222?ct=' +
+                encodeURIComponent(slug) + (APPLE_PT ? '&pt=' + encodeURIComponent(APPLE_PT) : '');
+            var androidUrl = 'https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach' +
+                '&referrer=' + encodeURIComponent('utm_source=go_page&utm_medium=landing&utm_campaign=' + slug);
+
+            var ua = navigator.userAgent || '';
+            var isIos = /iPhone|iPad|iPod/i.test(ua) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var isAndroid = /Android/i.test(ua);
+
+            var cta = document.getElementById('cta');
+            if (isIos) {
+                cta.href = iosUrl;
+                cta.textContent = 'Download on the App Store';
+            } else if (isAndroid) {
+                cta.href = androidUrl;
+                cta.textContent = 'Get it on Google Play';
+            } else {
+                document.body.className = 'desktop';
+                document.getElementById('ios-badge').href = iosUrl;
+                document.getElementById('android-badge').href = androidUrl;
+            }
+
+            // Meta Pixel — only loads when an ID is configured.
+            if (META_PIXEL_ID) {
+                !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', META_PIXEL_ID);
+                fbq('track', 'PageView', {content_name: slug});
+                cta.addEventListener('click', function () {
+                    fbq('track', 'Lead', {content_name: slug});
+                });
+            }
+
+            // GA4 — only loads when an ID is configured.
+            if (GA4_ID) {
+                var g = document.createElement('script');
+                g.async = true;
+                g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+                document.head.appendChild(g);
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', GA4_ID, {campaign_name: slug});
+            }
+        })();
+    </script>
+</body>
+</html>
