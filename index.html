@@ -656,6 +656,33 @@
         // Set current year dynamically
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
+        // Campaign tagging: /?q=<slug> (e.g. /?q=ig) tags every store link so
+        // installs attribute to that source in App Store Connect Analytics
+        // (ct/pt) and Play Console UTM reports. No param = "website".
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var slug = (params.get('q') || params.get('c') || 'website').toLowerCase();
+            if (!/^[a-z0-9][a-z0-9-]{0,63}$/.test(slug)) slug = 'website';
+            var APPLE_PT = '2104604';
+
+            var links = document.querySelectorAll('a[href]');
+            for (var i = 0; i < links.length; i++) {
+                var a = links[i];
+                var url;
+                if (a.hostname === 'apps.apple.com') {
+                    url = new URL(a.href);
+                    url.searchParams.set('ct', slug);
+                    url.searchParams.set('pt', APPLE_PT);
+                    a.href = url.toString();
+                } else if (a.hostname === 'play.google.com') {
+                    url = new URL(a.href);
+                    url.searchParams.set('referrer',
+                        'utm_source=web&utm_medium=site&utm_campaign=' + slug);
+                    a.href = url.toString();
+                }
+            }
+        })();
+
         // Benefits screenshot carousel
         (function () {
             var track = document.getElementById('carouselTrack');
