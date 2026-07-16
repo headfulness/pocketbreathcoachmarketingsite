@@ -99,7 +99,7 @@
                 if (m && /^[a-z0-9-]{1,64}$/.test(m)) slug = m;
             } catch (e) { /* ancient browser: keep 'direct' */ }
 
-            var APPLE_PT = ''; // App Store Connect provider token — fill alongside redirector's.
+            var APPLE_PT = '2104604'; // App Store Connect provider token — fill alongside redirector's.
             var iosUrl = 'https://apps.apple.com/us/app/pocket-breath-coach/id6444422222?ct=' +
                 encodeURIComponent(slug) + (APPLE_PT ? '&pt=' + encodeURIComponent(APPLE_PT) : '');
             var androidUrl = 'https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach' +
