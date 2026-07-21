@@ -32,7 +32,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&family=Inter:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -497,6 +497,224 @@
             text-align: left;
         }
 
+        /* Reviews Section */
+        .reviews {
+            background: var(--white);
+            padding: 10px 0 90px;
+        }
+
+        .reviews-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 40px;
+        }
+
+        .reviews h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+        }
+
+        .reviews-rating-line {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+        }
+
+        .reviews-rating-line .stars {
+            color: var(--primary-orange);
+        }
+
+        .reviews-carousel {
+            position: relative;
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 22px;
+            align-items: flex-start;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            padding: 6px 6px 26px;
+        }
+
+        .reviews-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .reviews .carousel-dots {
+            margin-top: 0;
+        }
+
+        /* Review cards, styled after native App Store / Google Play review UI */
+        .review-card {
+            flex: 0 0 340px;
+            scroll-snap-align: center;
+            border-radius: 18px;
+            padding: 20px 22px 22px;
+            text-align: left;
+            box-shadow: 0 12px 28px rgba(30, 24, 16, 0.10);
+        }
+
+        .review-body {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .stars {
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+
+        .review-source {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .review-source svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+
+        .review-card.light .review-source { color: #86868b; }
+        .review-card.dark .review-source { color: #98989f; }
+
+        /* iOS App Store variant */
+        .review-card.ios {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        .ios .ios-title {
+            font-family: inherit;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 0 0 6px;
+        }
+
+        .ios .ios-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .review-card.ios.light { background: #f2f2f7; }
+        .ios.light .ios-title { color: #1d1d1f; }
+        .ios.light .stars { color: #1d1d1f; }
+        .ios.light .ios-meta { color: #86868b; }
+        .ios.light .review-body { color: #6e6e73; }
+
+        .review-card.ios.dark { background: #1c1c1e; }
+        .ios.dark .ios-title { color: #f5f5f7; }
+        .ios.dark .stars { color: #f5f5f7; }
+        .ios.dark .ios-meta { color: #98989f; }
+        .ios.dark .review-body { color: #98989f; }
+
+        /* Google Play variant */
+        .review-card.play {
+            font-family: Roboto, 'Google Sans', 'Segoe UI', Arial, sans-serif;
+        }
+
+        .play-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .play-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .play-avatar svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .play-name {
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        .play-menu {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .play-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+
+        .play .stars {
+            letter-spacing: 1px;
+        }
+
+        .play-helpful {
+            margin: 12px 0 0;
+            font-size: 0.85rem;
+        }
+
+        .review-card.play.light {
+            background: var(--white);
+            border: 1px solid #e8eaed;
+        }
+        .play.light .play-name { color: #202124; }
+        .play.light .play-menu { color: #5f6368; }
+        .play.light .stars { color: #1a73e8; }
+        .play.light .play-date { color: #5f6368; }
+        .play.light .review-body { color: #5f6368; }
+        .play.light .play-helpful { color: #5f6368; }
+
+        .review-card.play.dark { background: #17171a; }
+        .play.dark .play-name { color: #e8eaed; }
+        .play.dark .play-menu { color: #9aa0a6; }
+        .play.dark .stars { color: #8ab4f8; }
+        .play.dark .play-date { color: #9aa0a6; }
+        .play.dark .review-body { color: #bdc1c6; }
+        .play.dark .play-helpful { color: #9aa0a6; }
+
+        @media (max-width: 768px) {
+            .reviews {
+                padding-bottom: 60px;
+            }
+
+            .reviews h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .review-card {
+                flex-basis: 80vw;
+            }
+        }
+
         /* Footer Styles */
         .footer {
             background: var(--white);
@@ -647,6 +865,143 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <div class="benefits-label">Reviews</div>
+                <h2>Why People Love Pocket Breath Coach</h2>
+                <p class="reviews-rating-line"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span> Hundreds of five-star reviews on the App&nbsp;Store and Google&nbsp;Play</p>
+            </div>
+
+            <div class="reviews-carousel">
+                <div class="reviews-track" id="reviewsTrack">
+                    <article class="review-card play dark">
+                        <div class="play-head">
+                            <span class="play-avatar" style="background:#7e57c2">P</span>
+                            <span class="play-name">Pixieface</span>
+                            <span class="play-menu" aria-hidden="true">&#8942;</span>
+                        </div>
+                        <div class="play-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span class="play-date">4/12/26</span>
+                        </div>
+                        <p class="review-body">I never knew that an app like this was available and never knew how much I actually needed it. I am so glad that I found it though! I suffer on a daily basis with crippling anxiety and panic. Even though these breathing exercises aren&#8217;t a cure, they have helped immensely! The best thing of all about this app is that you don&#8217;t need to pay to be able to get relief when you most need it. In case anyone is wondering, the 4/8 technique works best for a panic attack. Thanks Pocket Breathe coach!&#128157;</p>
+                        <p class="play-helpful">10 people found this helpful</p>
+                        <div class="review-source"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg> Google Play</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">Love This App</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>May 25 &#183; carolinagirl2heart007</span>
+                        </div>
+                        <p class="review-body">I paid a lot of money to join headspace and calm trying to find breathing exercise to help me relax during the day and to help me sleep at night. This app is amazing. The gong, the background sounds are exactly what I was searching for and the price is unbeatable.</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card play light">
+                        <div class="play-head">
+                            <span class="play-avatar" style="background:#00897b">A</span>
+                            <span class="play-name">Aiden Adams</span>
+                            <span class="play-menu" aria-hidden="true">&#8942;</span>
+                        </div>
+                        <div class="play-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span class="play-date">1/14/24</span>
+                        </div>
+                        <p class="review-body">Just the app I was looking for!! I love the preset patterns. The vagus nerve stimulator one made me yawn within three short cycles. Perfect! And then the 1:2 ratio options are my absolute favorite. That&#8217;s exactly the kind of guidance I&#8217;ve been wishing for!</p>
+                        <p class="play-helpful">66 people found this helpful</p>
+                        <div class="review-source"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg> Google Play</div>
+                    </article>
+
+                    <article class="review-card ios dark">
+                        <h3 class="ios-title">Best breathing app</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>Nov 19 &#183; rushnml</span>
+                        </div>
+                        <p class="review-body">I love this app &#8211; it&#8217;s easy to follow, you can select the scenery and adjust the ratio. It&#8217;s captivating and peaceful. Have been using it every day.</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">I LOVE THIS</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>Jun 17 &#183; Olaf_Olive</span>
+                        </div>
+                        <p class="review-body">I am so glad this exist! I sometimes really do need times to breath and having this app helps so much! I watched many videos on YouTube but now knowing there&#8217;s an app?? I&#8217;m downloading it now! Thank you Breath Coach for helping me!&#10084;&#65039;&#128591;&#9996;&#65039;</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card play light">
+                        <div class="play-head">
+                            <span class="play-avatar" style="background:#757575"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.6 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></span>
+                            <span class="play-name">A Google user</span>
+                            <span class="play-menu" aria-hidden="true">&#8942;</span>
+                        </div>
+                        <div class="play-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span class="play-date">9/13/25</span>
+                        </div>
+                        <p class="review-body">Great app, simple, effective and helps calm me. Thanks for the super cheap cost and simplicity overall. Sick of over-flowery apps and sneaky charges. So thank you!</p>
+                        <div class="review-source"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg> Google Play</div>
+                    </article>
+
+                    <article class="review-card ios dark">
+                        <h3 class="ios-title">Life changing, genuinely</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>Feb 20 &#183; cw722449</span>
+                        </div>
+                        <p class="review-body">I love this app so much. Im a chronic shallow, anxious breather and suffer with tightness in my diaphragm and this app is helping me to breathes deeply and relax for longer periods than I&#8217;ve ever known in my life. I have it on pretty much around the clock.</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">Love this app.</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>Sep 4 &#183; Nieda</span>
+                        </div>
+                        <p class="review-body">This is one app you see the benefits right away. My heart rate lowered immediately with just a few breathes.</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card play dark">
+                        <div class="play-head">
+                            <span class="play-avatar" style="background:#5c6bc0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.6 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></span>
+                            <span class="play-name">A Google user</span>
+                            <span class="play-menu" aria-hidden="true">&#8942;</span>
+                        </div>
+                        <div class="play-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span class="play-date">8/15/25</span>
+                        </div>
+                        <p class="review-body">Wonderful portable calming tool for kids w anxiety.</p>
+                        <div class="review-source"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg> Google Play</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">Just right</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>May 25 &#183; JonWadsworth</span>
+                        </div>
+                        <p class="review-body">Other apps had way too many options, and poor user interface. I love the simplicity and clear features this app has. Nicely done!</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+                </div>
+
+                <button class="carousel-btn prev" type="button" aria-label="Previous review" data-carousel="reviews">&#8249;</button>
+                <button class="carousel-btn next" type="button" aria-label="Next review" data-carousel="reviews">&#8250;</button>
+            </div>
+            <div class="carousel-dots" id="reviewsDots"></div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -755,6 +1110,79 @@
             function restart() { stop(); start(); }
 
             var box = document.querySelector('.benefits-carousel');
+            box.addEventListener('mouseenter', stop);
+            box.addEventListener('mouseleave', restart);
+            track.addEventListener('pointerdown', stop, { passive: true });
+            track.addEventListener('pointerup', restart, { passive: true });
+
+            start();
+        })();
+
+        // Reviews carousel
+        (function () {
+            var track = document.getElementById('reviewsTrack');
+            var dotsBox = document.getElementById('reviewsDots');
+            if (!track || !dotsBox) return;
+
+            var slides = track.children;
+            var index = 0;
+            var timer = null;
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            for (var i = 0; i < slides.length; i++) {
+                (function (i) {
+                    var dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to review ' + (i + 1));
+                    dot.addEventListener('click', function () { goTo(i); restart(); });
+                    dotsBox.appendChild(dot);
+                })(i);
+            }
+
+            function goTo(i) {
+                index = (i + slides.length) % slides.length;
+                var slide = slides[index];
+                var left = slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2;
+                track.scrollTo({
+                    left: Math.max(0, left),
+                    behavior: reducedMotion ? 'auto' : 'smooth'
+                });
+            }
+
+            function updateDots() {
+                for (var i = 0; i < dotsBox.children.length; i++) {
+                    dotsBox.children[i].classList.toggle('active', i === index);
+                }
+            }
+
+            track.addEventListener('scroll', function () {
+                var center = track.scrollLeft + track.clientWidth / 2;
+                var best = 0;
+                var bestDist = Infinity;
+                for (var i = 0; i < slides.length; i++) {
+                    var mid = slides[i].offsetLeft + slides[i].clientWidth / 2;
+                    var d = Math.abs(mid - center);
+                    if (d < bestDist) { bestDist = d; best = i; }
+                }
+                if (best !== index) {
+                    index = best;
+                    updateDots();
+                }
+            }, { passive: true });
+
+            var box = document.querySelector('.reviews-carousel');
+            box.querySelector('.carousel-btn.prev').addEventListener('click', function () { goTo(index - 1); restart(); });
+            box.querySelector('.carousel-btn.next').addEventListener('click', function () { goTo(index + 1); restart(); });
+
+            function start() {
+                if (!reducedMotion) {
+                    timer = setInterval(function () { goTo(index + 1); }, 6000);
+                }
+            }
+            function stop() { clearInterval(timer); }
+            function restart() { stop(); start(); }
+
             box.addEventListener('mouseenter', stop);
             box.addEventListener('mouseleave', restart);
             track.addEventListener('pointerdown', stop, { passive: true });
