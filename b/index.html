@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A breathing exercise was shared with you — Pocket Breath Coach</title>
+
+    <!-- Safari Smart App Banner (same app id as the home page) -->
+    <meta name="apple-itunes-app" content="app-id=6444422222, app-argument=https://pocketbreathcoach.com/b/">
+
+    <!-- App Icons for iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://pocketbreathcoach.com/apple-touch-icon.png">
+
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
+
+    <!--
+      Open Graph / Twitter tags are STATIC by design: GitHub Pages has no edge
+      functions and OG scrapers don't run JS, so per-link previews aren't possible.
+      See specs/deep_linking/guided_breathing_deep_links.md in the app repo.
+    -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pocketbreathcoach.com/b/">
+    <meta property="og:title" content="A breathing exercise was shared with you — Pocket Breath Coach">
+    <meta property="og:description" content="Someone shared a guided breathing exercise with you. Open it in the Pocket Breath Coach app to breathe along — pattern, sounds, and scenery included.">
+    <meta property="og:image" content="https://pocketbreathcoach.com/screenshot1.png">
+    <meta property="og:image:width" content="1179">
+    <meta property="og:image:height" content="2556">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://pocketbreathcoach.com/b/">
+    <meta name="twitter:title" content="A breathing exercise was shared with you — Pocket Breath Coach">
+    <meta name="twitter:description" content="Someone shared a guided breathing exercise with you. Open it in the Pocket Breath Coach app to breathe along — pattern, sounds, and scenery included.">
+    <meta name="twitter:image" content="https://pocketbreathcoach.com/screenshot1.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!--
+      Manual test token (4-7-8 "Wind Down" fixture — matches the app repo's spec example):
+
+        /b/?c=AQGQArwDIAAAUGT_UDNtBXdhdGVyBHJhaW4IbmlnaHRza3kLY2lyY2xlQmxvb20KbWFuZGFsYTAwNABXaW5kIERvd24
+
+      Expected decode: version 1; inhale 400cs, holdIn 700cs, exhale 800cs, holdOut 0cs;
+      guided volume 80, background volume 100; color 0xFF50336D;
+      ids water / rain / nightsky / circleBloom / mandala004; 0 tags; title "Wind Down".
+      Rendered: "Wind Down", "Inhale 4s · Hold 7s · Exhale 8s", 3.2 breaths/min.
+    -->
+
+    <style>
+        :root {
+            --primary-orange: #FF7A3D;
+            --primary-orange-hover: #FF5100;
+            --text-dark: #1E1810;
+            --text-medium: #575250;
+            --background-light: #F8F5F4;
+            --white: #FFFFFF;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(129deg, #50336d 0%, #2c71e8 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .header {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header img {
+            height: 52px;
+            width: auto;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 560px;
+            background: rgba(20, 14, 30, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 24px;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45);
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--primary-orange);
+            margin-bottom: 12px;
+        }
+
+        .card h1 {
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+            overflow-wrap: break-word;
+        }
+
+        .phase-line {
+            font-size: 1.15rem;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .bpm-line {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 24px;
+        }
+
+        /* Proportional bar of the four breathing phases */
+        .phase-bar {
+            display: flex;
+            height: 14px;
+            border-radius: 7px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .phase-bar span {
+            display: block;
+            height: 100%;
+        }
+
+        .phase-legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 28px;
+        }
+
+        .phase-legend i {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            margin-right: 6px;
+            font-style: normal;
+            vertical-align: baseline;
+        }
+
+        .seg-inhale { background: var(--primary-orange); }
+        .seg-hold { background: rgba(255, 255, 255, 0.35); }
+        .seg-exhale { background: #8fb6f5; }
+
+        .open-line {
+            font-size: 1.05rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .store-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .app-download-btn {
+            height: 58px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .app-download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            padding: 24px 0 32px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 20px;
+            }
+
+            .card h1 {
+                font-size: 1.5rem;
+            }
+
+            .app-download-btn {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/"><img src="/textlogo.png" alt="Pocket Breath Coach"></a>
+    </header>
+
+    <main>
+        <div class="card">
+            <div class="eyebrow">Shared with you</div>
+
+            <!-- Decoded exercise (shown when the token parses) -->
+            <div id="exercise" hidden>
+                <h1 id="exercise-title">Breathing exercise</h1>
+                <p class="phase-line" id="phase-line"></p>
+                <p class="bpm-line" id="bpm-line"></p>
+                <div class="phase-bar" id="phase-bar" aria-hidden="true"></div>
+                <div class="phase-legend" id="phase-legend" aria-hidden="true"></div>
+            </div>
+
+            <!-- Generic fallback (missing or unparseable token) -->
+            <div id="generic">
+                <h1>A breathing exercise was shared with you</h1>
+                <p class="bpm-line">Guided pattern, sounds, and scenery — ready to play.</p>
+            </div>
+
+            <p class="open-line">Open this exercise in the Pocket Breath Coach app.</p>
+
+            <div class="store-buttons">
+                <a href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222?pt=2104604&amp;ct=exercise-share" target="_blank">
+                    <img src="/app-store.png" alt="Download on the App Store" class="app-download-btn" />
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach&amp;referrer=utm_source%3Dweb%26utm_medium%3Dshare%26utm_campaign%3Dexercise_share" target="_blank">
+                    <img src="/google-play.png" alt="Get it on Google Play" class="app-download-btn" />
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Already have the app? Tap the link again on your phone and it opens directly.</p>
+        <p><a href="/">pocketbreathcoach.com</a></p>
+    </footer>
+
+    <script>
+        // --- decoder (pure) ---
+        // Mirrors the app's GuidedBreathingDeepLink payload grammar (version 1).
+        // Source of truth: specs/deep_linking/guided_breathing_deep_links.md in the
+        // pocket-breath-coach-flutter repo. Keep byte-for-byte in sync with Dart.
+        // Everything here is tolerant: any malformed input returns null.
+
+        function base64UrlToBytes(token) {
+            if (typeof token !== 'string' || token.length === 0) return null;
+            var b64 = token.replace(/-/g, '+').replace(/_/g, '/');
+            if (!/^[A-Za-z0-9+/]+$/.test(b64)) return null;
+            while (b64.length % 4 !== 0) b64 += '=';
+            var bin;
+            try {
+                bin = atob(b64);
+            } catch (e) {
+                return null;
+            }
+            var bytes = new Uint8Array(bin.length);
+            for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            return bytes;
+        }
+
+        function utf8Decode(bytes) {
+            try {
+                return new TextDecoder('utf-8').decode(bytes);
+            } catch (e) {
+                return '';
+            }
+        }
+
+        // Parses the binary payload. Returns null when the buffer is shorter than
+        // the fixed 15-byte header, a length prefix overruns the buffer, or all
+        // four intervals are zero. An unknown version byte yields a best-effort
+        // header-only parse (schemaMismatch: true) per the spec's rule 1.
+        function parsePayload(bytes) {
+            if (!bytes || bytes.length < 15) return null;
+
+            function u16(o) { return (bytes[o] << 8) | bytes[o + 1]; }
+
+            var result = {
+                version: bytes[0],
+                schemaMismatch: bytes[0] !== 1,
+                inhaleCs: u16(1),
+                holdInCs: u16(3),
+                exhaleCs: u16(5),
+                holdOutCs: u16(7),
+                guidedVolume: Math.min(bytes[9], 100),
+                backgroundVolume: Math.min(bytes[10], 100),
+                colorArgb: (((bytes[11] << 24) >>> 0) + (bytes[12] << 16) + (bytes[13] << 8) + bytes[14]) >>> 0,
+                guidedSoundId: '',
+                backgroundSoundId: '',
+                sceneId: '',
+                animationName: '',
+                iconName: '',
+                tags: [],
+                title: ''
+            };
+
+            if (result.inhaleCs + result.holdInCs + result.exhaleCs + result.holdOutCs === 0) {
+                return null; // rejected: no pattern at all
+            }
+
+            if (result.schemaMismatch) {
+                return result; // unknown version: trust only the fixed header
+            }
+
+            var off = 15;
+            function readStr() {
+                if (off >= bytes.length) return null;
+                var n = bytes[off];
+                off += 1;
+                if (off + n > bytes.length) return null;
+                var s = utf8Decode(bytes.subarray(off, off + n));
+                off += n;
+                return s;
+            }
+
+            var fields = ['guidedSoundId', 'backgroundSoundId', 'sceneId', 'animationName', 'iconName'];
+            for (var i = 0; i < fields.length; i++) {
+                var s = readStr();
+                if (s === null) return null;
+                result[fields[i]] = s;
+            }
+
+            if (off >= bytes.length) return null; // missing tag-count byte
+            var tagCount = bytes[off];
+            off += 1;
+            for (var t = 0; t < tagCount; t++) {
+                var tag = readStr();
+                if (tag === null) return null;
+                result.tags.push(tag);
+            }
+
+            // Remainder is the title (may be empty). Cap at 60 chars for display.
+            var title = utf8Decode(bytes.subarray(off)).trim();
+            result.title = Array.from(title).slice(0, 60).join('');
+            return result;
+        }
+
+        function decodeToken(token) {
+            try {
+                return parsePayload(base64UrlToBytes(token));
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // Formatting helpers (pure).
+        function fmtSeconds(cs) {
+            var s = cs / 100;
+            return (Math.round(s * 10) / 10) + 's';
+        }
+
+        // e.g. "Inhale 4s · Hold 7s · Exhale 8s" — zero-length holds omitted.
+        function phaseSummary(d) {
+            var parts = [];
+            if (d.inhaleCs > 0) parts.push('Inhale ' + fmtSeconds(d.inhaleCs));
+            if (d.holdInCs > 0) parts.push('Hold ' + fmtSeconds(d.holdInCs));
+            if (d.exhaleCs > 0) parts.push('Exhale ' + fmtSeconds(d.exhaleCs));
+            if (d.holdOutCs > 0) parts.push('Hold ' + fmtSeconds(d.holdOutCs));
+            return parts.join(' · ');
+        }
+
+        function breathsPerMinute(d) {
+            var totalSeconds = (d.inhaleCs + d.holdInCs + d.exhaleCs + d.holdOutCs) / 100;
+            return (60 / totalSeconds).toFixed(1);
+        }
+        // --- end decoder ---
+
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var decoded = decodeToken(params.get('c') || '');
+            if (!decoded) return; // generic state stays visible
+
+            var exercise = document.getElementById('exercise');
+            var generic = document.getElementById('generic');
+
+            // Untrusted input: always textContent, never innerHTML.
+            document.getElementById('exercise-title').textContent =
+                decoded.title !== '' ? decoded.title : 'Breathing exercise';
+            document.getElementById('phase-line').textContent = phaseSummary(decoded);
+            document.getElementById('bpm-line').textContent =
+                breathsPerMinute(decoded) + ' breaths per minute';
+
+            // Proportional phase bar + legend.
+            var bar = document.getElementById('phase-bar');
+            var legend = document.getElementById('phase-legend');
+            var total = decoded.inhaleCs + decoded.holdInCs + decoded.exhaleCs + decoded.holdOutCs;
+            var phases = [
+                { label: 'Inhale', cs: decoded.inhaleCs, cls: 'seg-inhale' },
+                { label: 'Hold', cs: decoded.holdInCs, cls: 'seg-hold' },
+                { label: 'Exhale', cs: decoded.exhaleCs, cls: 'seg-exhale' },
+                { label: 'Hold', cs: decoded.holdOutCs, cls: 'seg-hold' }
+            ];
+            var seenLegend = {};
+            for (var i = 0; i < phases.length; i++) {
+                var p = phases[i];
+                if (p.cs === 0) continue;
+                var seg = document.createElement('span');
+                seg.className = p.cls;
+                seg.style.width = (100 * p.cs / total) + '%';
+                bar.appendChild(seg);
+                if (!seenLegend[p.cls]) {
+                    seenLegend[p.cls] = true;
+                    var item = document.createElement('span');
+                    var swatch = document.createElement('i');
+                    swatch.className = p.cls;
+                    item.appendChild(swatch);
+                    item.appendChild(document.createTextNode(p.label));
+                    legend.appendChild(item);
+                }
+            }
+
+            generic.hidden = true;
+            exercise.hidden = false;
+        })();
+    </script>
+</body>
+</html>

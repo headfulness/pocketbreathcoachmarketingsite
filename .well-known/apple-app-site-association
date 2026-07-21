@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["W4XMTX86R2.com.headfulness.pocketBreathCoach"],
+        "appID": "W4XMTX86R2.com.headfulness.pocketBreathCoach",
+        "paths": ["/b/*"],
+        "components": [
+          {
+            "/": "/b/*"
+          }
+        ]
+      }
+    ]
+  }
+}

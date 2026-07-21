@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.headfulness.pocket_breath_coach",
+      "sha256_cert_fingerprints": [
+        "6F:E7:79:66:55:1F:2E:4D:81:8A:36:AC:CA:2E:F6:F4:BC:E8:11:29:08:B1:DC:4D:40:0A:35:E9:71:D7:AD:4E",
+        "EE:30:BB:06:EA:0F:21:18:0E:E2:C3:00:49:18:AE:BB:4E:DE:09:13:51:F9:34:7F:7D:E1:6F:27:CB:E9:09:14"
+      ]
+    }
+  }
+]
