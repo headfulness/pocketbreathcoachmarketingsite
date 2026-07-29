@@ -1052,6 +1052,16 @@
                     a.href = url.toString();
                 }
             }
+
+            // Store links are tagged; clean the campaign params out of the
+            // address bar so visitors see a bare pocketbreathcoach.com.
+            if (params.has('q') || params.has('c')) {
+                params.delete('q');
+                params.delete('c');
+                var rest = params.toString();
+                history.replaceState(null, '',
+                    window.location.pathname + (rest ? '?' + rest : '') + window.location.hash);
+            }
         })();
 
         // Benefits screenshot carousel
