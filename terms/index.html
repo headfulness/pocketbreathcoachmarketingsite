@@ -17,13 +17,15 @@
 
     <style>
         :root {
-            --primary-orange: #FF7A3D;
-            --primary-orange-hover: #FF5100;
-            --text-dark: #1E1810;
-            --text-medium: #575250;
-            --background-light: #F8F5F4;
+            --primary-orange: #BB86FD;
+            --primary-orange-hover: #D3B4FE;
+            --text-dark: #F2EEF8;
+            --text-medium: #ABA1BE;
+            --background-light: #262035;
             --white: #FFFFFF;
             --black: #000000;
+            --panel: #1C1726;
+            --night: #131018;
         }
 
         * {
@@ -36,7 +38,10 @@
             font-family: 'Lato', sans-serif;
             line-height: 1.6;
             color: var(--text-medium);
-            background: linear-gradient(129deg, #50336d 0%, #2c71e8 50%, #e5e7eb 100%);
+            background: radial-gradient(52% 40% at 80% -6%, rgba(80,51,109,0.55), transparent 70%),
+                        radial-gradient(45% 34% at 12% 4%, rgba(68,90,200,0.22), transparent 70%),
+                        var(--night);
+            background-attachment: fixed;
             min-height: 100vh;
         }
 
@@ -109,7 +114,7 @@
 
         /* Terms Content */
         .terms-section {
-            background: var(--white);
+            background: var(--panel);
             padding: 70px 0 100px;
             margin-top: 20px;
             border-radius: 50px 50px 0 0;
@@ -166,10 +171,10 @@
 
         /* Footer Styles */
         .footer {
-            background: var(--white);
+            background: var(--panel);
             padding: 40px 0;
             text-align: center;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid rgba(242,238,248,0.08);
         }
 
         .footer-content {
