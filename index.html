@@ -1056,6 +1056,12 @@
             if (!/^[a-z0-9][a-z0-9-]{0,63}$/.test(slug)) slug = 'website';
             var APPLE_PT = '2104604';
 
+            // In-app browsers (Instagram/Facebook/TikTok/etc.) are WKWebViews with
+            // no "new tab" — a tap on a target="_blank" link silently does nothing
+            // (only long-press "Open" works). Drop the target on store links there
+            // so a tap becomes a normal same-frame navigation to the store.
+            var inAppBrowser = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Snapchat|Pinterest|TikTok|musical_ly|Twitter|GSA\//i.test(navigator.userAgent || '');
+
             var links = document.querySelectorAll('a[href]');
             for (var i = 0; i < links.length; i++) {
                 var a = links[i];
@@ -1065,11 +1071,13 @@
                     url.searchParams.set('ct', slug);
                     url.searchParams.set('pt', APPLE_PT);
                     a.href = url.toString();
+                    if (inAppBrowser) a.removeAttribute('target');
                 } else if (a.hostname === 'play.google.com') {
                     url = new URL(a.href);
                     url.searchParams.set('referrer',
                         'utm_source=web&utm_medium=site&utm_campaign=' + slug);
                     a.href = url.toString();
+                    if (inAppBrowser) a.removeAttribute('target');
                 }
             }
 
