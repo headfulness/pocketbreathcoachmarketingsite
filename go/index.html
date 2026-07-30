@@ -6,6 +6,28 @@
     <title>Get Pocket Breath Coach</title>
     <meta name="robots" content="noindex">
 
+    <script>
+        // Fast path for App Store taps rerouted here from an iOS in-app browser
+        // (Instagram/Facebook block direct apps.apple.com taps). A scripted
+        // redirect is NOT treated as a blocked link-tap, so this gets through
+        // where the badge tap could not. Runs during head parse, before the
+        // page paints, so the bounce is invisible when it works.
+        (function () {
+            try {
+                var p = new URLSearchParams(location.search);
+                if (p.get('auto') !== '1') return;
+                var ua = navigator.userAgent || '';
+                var isIos = /iPhone|iPad|iPod/i.test(ua) ||
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                if (!isIos) return;
+                var slug = p.get('c');
+                if (!slug || !/^[a-z0-9-]{1,64}$/.test(slug)) slug = 'direct';
+                location.replace('https://apps.apple.com/us/app/pocket-breath-coach/id6444422222' +
+                    '?pt=2104604&ct=' + encodeURIComponent(slug));
+            } catch (e) { /* fall through to the visible page below */ }
+        })();
+    </script>
+
     <!-- Safari Smart App Banner (renders in real Safari; not in social in-app browsers) -->
     <meta name="apple-itunes-app" content="app-id=6444422222, app-argument=https://pocketbreathcoach.com/go/">
 
@@ -53,6 +75,20 @@
         }
         .cta:hover { background: var(--primary-orange-hover); }
         .trust { margin-top: 22px; font-size: 0.88rem; opacity: 0.8; }
+        /* Shown only when we're stuck inside a social in-app browser that
+           blocks the App Store hand-off — the always-works escape hatch. */
+        .safari-hint {
+            display: none;
+            margin: 18px auto 0;
+            max-width: 340px;
+            background: rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+        body.in-app .safari-hint { display: block; }
         .badges { display: none; margin-top: 8px; }
         .badges img { height: 52px; margin: 6px; }
         .qr-block { display: none; margin-top: 26px; }
@@ -84,6 +120,8 @@
         </div>
 
         <p class="trust">Free to try &nbsp;·&nbsp; 260+ exercises &nbsp;·&nbsp; Works offline</p>
+
+        <p class="safari-hint">Button not opening the App Store? Your app’s built-in browser is blocking it. Tap the <strong>•••</strong> (or <strong>⇪</strong>) menu and choose <strong>“Open in Safari”</strong>, then tap the button again.</p>
     </div>
 
     <script>
@@ -109,6 +147,11 @@
             var isIos = /iPhone|iPad|iPod/i.test(ua) ||
                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
             var isAndroid = /Android/i.test(ua);
+
+            // If we're still here inside an iOS in-app browser, the App Store
+            // hand-off is likely being blocked — reveal the "Open in Safari" hint.
+            var inAppBrowser = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Snapchat|Pinterest|TikTok|musical_ly|Twitter|GSA\//i.test(ua);
+            if (inAppBrowser && isIos) document.body.classList.add('in-app');
 
             var cta = document.getElementById('cta');
             if (isIos) {

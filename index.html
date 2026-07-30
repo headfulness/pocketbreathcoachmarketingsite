@@ -1056,28 +1056,38 @@
             if (!/^[a-z0-9][a-z0-9-]{0,63}$/.test(slug)) slug = 'website';
             var APPLE_PT = '2104604';
 
-            // In-app browsers (Instagram/Facebook/TikTok/etc.) are WKWebViews with
-            // no "new tab" — a tap on a target="_blank" link silently does nothing
-            // (only long-press "Open" works). Drop the target on store links there
-            // so a tap becomes a normal same-frame navigation to the store.
-            var inAppBrowser = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Snapchat|Pinterest|TikTok|musical_ly|Twitter|GSA\//i.test(navigator.userAgent || '');
+            // Meta's iOS in-app browser (Instagram/Facebook/Threads) deliberately
+            // blocks a *tap* whose target is apps.apple.com to keep users in-app —
+            // only long-press "Open Link" gets through. No HTML/CSS attribute can
+            // override it. The workaround: send the tap to a page on our own domain
+            // (/go/), which then bounces to the store via a scripted redirect — that
+            // redirect is not treated as a blocked link-tap. Android's in-app browser
+            // and Google Play links are unaffected, so only iOS App Store links reroute.
+            var ua = navigator.userAgent || '';
+            var inAppBrowser = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Snapchat|Pinterest|TikTok|musical_ly|Twitter|GSA\//i.test(ua);
+            var isIos = /iPhone|iPad|iPod/i.test(ua) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var iosInAppBlocked = inAppBrowser && isIos;
 
             var links = document.querySelectorAll('a[href]');
             for (var i = 0; i < links.length; i++) {
                 var a = links[i];
                 var url;
                 if (a.hostname === 'apps.apple.com') {
-                    url = new URL(a.href);
-                    url.searchParams.set('ct', slug);
-                    url.searchParams.set('pt', APPLE_PT);
-                    a.href = url.toString();
-                    if (inAppBrowser) a.removeAttribute('target');
+                    if (iosInAppBlocked) {
+                        a.href = '/go/?c=' + encodeURIComponent(slug) + '&auto=1';
+                        a.removeAttribute('target');
+                    } else {
+                        url = new URL(a.href);
+                        url.searchParams.set('ct', slug);
+                        url.searchParams.set('pt', APPLE_PT);
+                        a.href = url.toString();
+                    }
                 } else if (a.hostname === 'play.google.com') {
                     url = new URL(a.href);
                     url.searchParams.set('referrer',
                         'utm_source=web&utm_medium=site&utm_campaign=' + slug);
                     a.href = url.toString();
-                    if (inAppBrowser) a.removeAttribute('target');
                 }
             }
 
