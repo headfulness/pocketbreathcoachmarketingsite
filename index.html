@@ -99,13 +99,33 @@
             align-items: center;
         }
 
+        /* Store badge links. The badge PNGs contain text ("Download on the
+           App Store"), which iOS Live Text grabs inside in-app webviews
+           (Instagram/Facebook) and swallows the tap. inline-block + line-height:0
+           gives the <a> a solid hit rectangle. */
+        .header-buttons a,
+        .hero-buttons a,
+        .footer-buttons a {
+            display: inline-block;
+            line-height: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         .app-download-btn {
             height: 58px;
             width: auto;
             transition: transform 0.3s ease;
+            /* Let taps/long-presses fall through to the <a> instead of the
+               image's Live Text / callout layer (fixes Instagram in-app browser). */
+            pointer-events: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
         }
 
-        .app-download-btn:hover {
+        .header-buttons a:hover .app-download-btn,
+        .hero-buttons a:hover .app-download-btn,
+        .footer-buttons a:hover .app-download-btn {
             transform: translateY(-2px);
         }
 
