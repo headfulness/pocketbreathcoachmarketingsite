@@ -2,13 +2,1224 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket Breath Coach</title>
     <meta name="robots" content="noindex">
     <link rel="canonical" href="https://pocketbreathcoach.com/">
-    <meta http-equiv="refresh" content="0; url=/?q=instagram">
-    <script>location.replace('/?q=instagram');</script>
+    
+    <!-- Safari Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6444422222, app-argument=https://pocketbreathcoach.com">
+    
+    <!-- App Icons for iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://pocketbreathcoach.com/apple-touch-icon.png">
+    
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pocketbreathcoach.com/">
+    <meta property="og:title" content="Pocket Breath Coach - Relieve Anxiety With Slow, Rhythmic Breathing">
+    <meta property="og:description" content="Our app makes it easy to incorporate slow breathing exercises into your daily routine. Reduce stress, improve sleep, and enhance focus with guided breathing exercises.">
+    <meta property="og:image" content="https://pocketbreathcoach.com/screenshot1.png">
+    <meta property="og:image:width" content="1179">
+    <meta property="og:image:height" content="2556">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://pocketbreathcoach.com/">
+    <meta name="twitter:title" content="Pocket Breath Coach - Relieve Anxiety With Slow, Rhythmic Breathing">
+    <meta name="twitter:description" content="Our app makes it easy to incorporate slow breathing exercises into your daily routine. Reduce stress, improve sleep, and enhance focus with guided breathing exercises.">
+    <meta name="twitter:image" content="https://pocketbreathcoach.com/screenshot1.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&family=Inter:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-orange: #FF7A3D;
+            --primary-orange-hover: #FF5100;
+            --text-dark: #1E1810;
+            --text-medium: #575250;
+            --background-light: #F8F5F4;
+            --white: #FFFFFF;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-medium);
+            background: linear-gradient(129deg, #50336d 0%, #2c71e8 50%, #e5e7eb 100%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 100;
+            padding: 20px 0;
+            background: transparent;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* Single platform-aware download button — real text, not a PNG badge,
+           so there's no baked-in image text for iOS Live Text to hijack and no
+           need for pointer-events / user-select workarounds. Long-press offers
+           "Open Link" cleanly across the whole button. */
+        .app-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary-orange);
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1;
+            padding: 16px 30px;
+            border-radius: 14px;
+            box-shadow: 0 10px 26px rgba(255, 122, 61, 0.35);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .app-cta:hover {
+            background: var(--primary-orange-hover);
+            transform: translateY(-2px);
+        }
+
+        .app-cta:active {
+            transform: translateY(0);
+        }
+
+        .app-cta-icon {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .app-cta svg {
+            height: 20px;
+            width: auto;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            color: var(--white);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: none;
+            gap: 20px;
+        }
+
+        /* Phone Mockup */
+        .phone-mockup {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-frame {
+            position: relative;
+            width: 280px;
+            height: 560px;
+            padding: 10px;
+            background: #1a1a1e;
+            border-radius: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 34px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: var(--white);
+            padding: 100px 0;
+            margin-top: -50px;
+            border-radius: 50px 50px 0 0;
+            position: relative;
+        }
+
+        .benefits-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 80px;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-phone {
+            position: relative;
+        }
+
+        .benefits-phone .phone-frame {
+            width: 260px;
+            height: 520px;
+        }
+
+        /* Benefits screenshot carousel */
+        .benefits-carousel {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--primary-orange);
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 4px;
+            transition: transform 0.2s ease, background 0.2s ease;
+            z-index: 2;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-orange);
+            color: var(--white);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-btn.prev {
+            left: -19px;
+        }
+
+        .carousel-btn.next {
+            right: -19px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 9px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+
+        .carousel-dot {
+            width: 9px;
+            height: 9px;
+            border: none;
+            border-radius: 50%;
+            background: #d8d3d0;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-orange);
+            transform: scale(1.25);
+        }
+
+        .benefits-text {
+            padding-top: 20px;
+        }
+
+        .benefits-label {
+            font-size: 0.9rem;
+            color: var(--primary-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+
+        .benefits h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+        }
+
+        .benefits-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-medium);
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .check-icon::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-buttons {
+                display: flex;
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .benefits-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .benefits-phone {
+                display: flex;
+                justify-content: center;
+            }
+            .header-buttons {
+                display: none;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+            .benefits-list {
+                padding-left: 25%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 60px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .phone-frame {
+                width: 240px;
+                height: 480px;
+            }
+
+            .benefits-phone .phone-frame {
+                width: 220px;
+                height: 440px;
+            }
+
+            .benefits h2 {
+                font-size: 2rem;
+            }
+
+            .benefits {
+                padding: 60px 0;
+            }
+            .benefits-list {
+                padding-left: 15%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .phone-frame {
+                width: 200px;
+                height: 400px;
+                padding: 8px;
+                border-radius: 34px;
+            }
+
+            .phone-screen {
+                border-radius: 26px;
+            }
+
+            .benefits-phone .phone-frame {
+                width: 180px;
+                height: 360px;
+            }
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .header-buttons {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        .benefits-list-item {
+            text-align: left;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--white);
+            padding: 10px 0 90px;
+        }
+
+        .reviews-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 40px;
+        }
+
+        .reviews h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 14px;
+        }
+
+        .reviews-rating-line {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+        }
+
+        .reviews-rating-line .stars {
+            color: var(--primary-orange);
+        }
+
+        .reviews-carousel {
+            position: relative;
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 22px;
+            align-items: flex-start;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            padding: 6px 6px 26px;
+        }
+
+        .reviews-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .reviews .carousel-dots {
+            margin-top: 0;
+        }
+
+        /* Review cards, styled after native App Store / Google Play review UI */
+        .review-card {
+            flex: 0 0 340px;
+            scroll-snap-align: center;
+            border-radius: 18px;
+            padding: 20px 22px 22px;
+            text-align: left;
+            box-shadow: 0 12px 28px rgba(30, 24, 16, 0.10);
+        }
+
+        .review-body {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .stars {
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+
+        .review-source {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .review-source svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+
+        .review-card.light .review-source { color: #86868b; }
+        .review-card.dark .review-source { color: #98989f; }
+
+        /* iOS App Store variant */
+        .review-card.ios {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        .ios .ios-title {
+            font-family: inherit;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 0 0 6px;
+        }
+
+        .ios .ios-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .review-card.ios.light { background: #f2f2f7; }
+        .ios.light .ios-title { color: #1d1d1f; }
+        .ios.light .stars { color: #1d1d1f; }
+        .ios.light .ios-meta { color: #86868b; }
+        .ios.light .review-body { color: #6e6e73; }
+
+        .review-card.ios.dark { background: #1c1c1e; }
+        .ios.dark .ios-title { color: #f5f5f7; }
+        .ios.dark .stars { color: #f5f5f7; }
+        .ios.dark .ios-meta { color: #98989f; }
+        .ios.dark .review-body { color: #98989f; }
+
+        /* Google Play variant */
+        .review-card.play {
+            font-family: Roboto, 'Google Sans', 'Segoe UI', Arial, sans-serif;
+        }
+
+        .play-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .play-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .play-avatar svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .play-name {
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        .play-menu {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .play-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+
+        .play .stars {
+            letter-spacing: 1px;
+        }
+
+        .play-helpful {
+            margin: 12px 0 0;
+            font-size: 0.85rem;
+        }
+
+        .review-card.play.light {
+            background: var(--white);
+            border: 1px solid #e8eaed;
+        }
+        .play.light .play-name { color: #202124; }
+        .play.light .play-menu { color: #5f6368; }
+        .play.light .stars { color: #1a73e8; }
+        .play.light .play-date { color: #5f6368; }
+        .play.light .review-body { color: #5f6368; }
+        .play.light .play-helpful { color: #5f6368; }
+
+        .review-card.play.dark { background: #17171a; }
+        .play.dark .play-name { color: #e8eaed; }
+        .play.dark .play-menu { color: #9aa0a6; }
+        .play.dark .stars { color: #8ab4f8; }
+        .play.dark .play-date { color: #9aa0a6; }
+        .play.dark .review-body { color: #bdc1c6; }
+        .play.dark .play-helpful { color: #9aa0a6; }
+
+        @media (max-width: 768px) {
+            .reviews {
+                padding-bottom: 60px;
+            }
+
+            .reviews h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .review-card {
+                flex-basis: 80vw;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-content {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <p><a href="/?q=instagram">Continue to pocketbreathcoach.com</a></p>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/textlogo.png" alt="Pocket Breath Coach" />
+                </div>
+                
+                <div class="header-buttons">
+                    <a class="app-cta" href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank" rel="noopener">
+                        <span class="app-cta-icon"></span><span class="app-cta-label">Download on the App Store</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Relieve Anxiety With Slow, Rhythmic Breathing</h1>
+                    <p class="hero-description">
+                        Our app, &quot;Pocket Breath Coach,&quot; makes it easy to incorporate slow breathing exercises into your daily routine. With guided exercises, progress tracking, and customizable settings, you'll have everything you need to start reaping the benefits of slow breathing.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a class="app-cta" href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank" rel="noopener">
+                            <span class="app-cta-icon"></span><span class="app-cta-label">Download on the App Store</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <img src="/img/hero.webp" alt="A 4-7-8 breathing session over a beach at sunset in Pocket Breath Coach" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-phone">
+                    <div class="benefits-carousel">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="carousel-track" id="carouselTrack">
+                                    <div class="carousel-slide"><img src="/img/carousel-1.webp" alt="A 5-5 balanced breathing session over a mountain lake" loading="lazy" /></div>
+                                    <div class="carousel-slide"><img src="/img/carousel-2.webp" alt="Aurora Lullaby session with pulsing rings over the northern lights" loading="lazy" /></div>
+                                    <div class="carousel-slide"><img src="/img/carousel-3.webp" alt="Box breathing square animation over Lake Tahoe" loading="lazy" /></div>
+                                    <div class="carousel-slide"><img src="/img/carousel-4.webp" alt="A calming circle bloom animation during an exhale" loading="lazy" /></div>
+                                    <div class="carousel-slide"><img src="/img/carousel-5.webp" alt="A flowing breathing curve over a warm lava lamp scene" loading="lazy" /></div>
+                                    <div class="carousel-slide"><img src="/img/carousel-6.webp" alt="Octagon breathing animation under a starry night sky" loading="lazy" /></div>
+                                    <div class="carousel-slide"><img src="/img/carousel-7.webp" alt="A 4-7-8 breathing session over a sunny Maui beach" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button class="carousel-btn prev" type="button" aria-label="Previous screenshot">&#8249;</button>
+                            <button class="carousel-btn next" type="button" aria-label="Next screenshot">&#8250;</button>
+                        </div>
+                        <div class="carousel-dots" id="carouselDots"></div>
+                    </div>
+                </div>
+                
+                <div class="benefits-text">
+                    <div class="benefits-label">Benefits</div>
+                    <h2>The Benefits of Slow, Rhythmic Breathing</h2>
+                    <p class="benefits-description">
+                        By taking just a few minutes each day to do a slow, deep breathing exercise, you can significantly reduce stress and improve your overall sense of well-being.
+                    </p>
+                    <p class="benefits-description">
+                        <strong>Some of the benefits of slow breathing exercises include:</strong>
+                    </p>
+                    
+                    <ul class="benefits-list">
+                        <li>
+                            <span class="check-icon"></span>
+                            <strong class="benefits-list-item">Reduced stress and anxiety</strong>
+                        </li>
+                        <li>
+                            <span class="check-icon"></span>
+                            <strong class="benefits-list-item">Improved sleep quality</strong>
+                        </li>
+                        <li>
+                            <span class="check-icon"></span>
+                            <strong class="benefits-list-item">Increased relaxation</strong>
+                        </li>
+                        <li>
+                            <span class="check-icon"></span>
+                            <strong class="benefits-list-item">Enhanced focus and concentration</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <div class="benefits-label">Reviews</div>
+                <h2>Why People Love Pocket Breath Coach</h2>
+                <p class="reviews-rating-line"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span> Hundreds of five-star reviews on the App&nbsp;Store and Google&nbsp;Play</p>
+            </div>
+
+            <div class="reviews-carousel">
+                <div class="reviews-track" id="reviewsTrack">
+                    <article class="review-card play light">
+                        <div class="play-head">
+                            <span class="play-avatar" style="background:#7e57c2">P</span>
+                            <span class="play-name">Pixieface</span>
+                            <span class="play-menu" aria-hidden="true">&#8942;</span>
+                        </div>
+                        <div class="play-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span class="play-date">4/12/26</span>
+                        </div>
+                        <p class="review-body">I never knew that an app like this was available and never knew how much I actually needed it. I am so glad that I found it though! I suffer on a daily basis with crippling anxiety and panic. Even though these breathing exercises aren&#8217;t a cure, they have helped immensely! The best thing of all about this app is that you don&#8217;t need to pay to be able to get relief when you most need it. In case anyone is wondering, the 4/8 technique works best for a panic attack. Thanks Pocket Breathe coach!&#128157;</p>
+                        <p class="play-helpful">10 people found this helpful</p>
+                        <div class="review-source"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg> Google Play</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">Love This App</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>May 25 &#183; carolinagirl2heart007</span>
+                        </div>
+                        <p class="review-body">I paid a lot of money to join headspace and calm trying to find breathing exercise to help me relax during the day and to help me sleep at night. This app is amazing. The gong, the background sounds are exactly what I was searching for and the price is unbeatable.</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card play light">
+                        <div class="play-head">
+                            <span class="play-avatar" style="background:#00897b">A</span>
+                            <span class="play-name">Aiden Adams</span>
+                            <span class="play-menu" aria-hidden="true">&#8942;</span>
+                        </div>
+                        <div class="play-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span class="play-date">1/14/24</span>
+                        </div>
+                        <p class="review-body">Just the app I was looking for!! I love the preset patterns. The vagus nerve stimulator one made me yawn within three short cycles. Perfect! And then the 1:2 ratio options are my absolute favorite. That&#8217;s exactly the kind of guidance I&#8217;ve been wishing for!</p>
+                        <p class="play-helpful">66 people found this helpful</p>
+                        <div class="review-source"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg> Google Play</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">Best breathing app</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>Nov 19 &#183; rushnml</span>
+                        </div>
+                        <p class="review-body">I love this app &#8211; it&#8217;s easy to follow, you can select the scenery and adjust the ratio. It&#8217;s captivating and peaceful. Have been using it every day.</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">I LOVE THIS</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>Jun 17 &#183; Olaf_Olive</span>
+                        </div>
+                        <p class="review-body">I am so glad this exist! I sometimes really do need times to breath and having this app helps so much! I watched many videos on YouTube but now knowing there&#8217;s an app?? I&#8217;m downloading it now! Thank you Breath Coach for helping me!&#10084;&#65039;&#128591;&#9996;&#65039;</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card play light">
+                        <div class="play-head">
+                            <span class="play-avatar" style="background:#757575"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.6 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></span>
+                            <span class="play-name">A Google user</span>
+                            <span class="play-menu" aria-hidden="true">&#8942;</span>
+                        </div>
+                        <div class="play-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span class="play-date">9/13/25</span>
+                        </div>
+                        <p class="review-body">Great app, simple, effective and helps calm me. Thanks for the super cheap cost and simplicity overall. Sick of over-flowery apps and sneaky charges. So thank you!</p>
+                        <div class="review-source"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg> Google Play</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">Life changing, genuinely</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>Feb 20 &#183; cw722449</span>
+                        </div>
+                        <p class="review-body">I love this app so much. Im a chronic shallow, anxious breather and suffer with tightness in my diaphragm and this app is helping me to breathes deeply and relax for longer periods than I&#8217;ve ever known in my life. I have it on pretty much around the clock.</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">Love this app.</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>Sep 4 &#183; Nieda</span>
+                        </div>
+                        <p class="review-body">This is one app you see the benefits right away. My heart rate lowered immediately with just a few breathes.</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+
+                    <article class="review-card play light">
+                        <div class="play-head">
+                            <span class="play-avatar" style="background:#5c6bc0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.6 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></span>
+                            <span class="play-name">A Google user</span>
+                            <span class="play-menu" aria-hidden="true">&#8942;</span>
+                        </div>
+                        <div class="play-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span class="play-date">8/15/25</span>
+                        </div>
+                        <p class="review-body">Wonderful portable calming tool for kids w anxiety.</p>
+                        <div class="review-source"><svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg> Google Play</div>
+                    </article>
+
+                    <article class="review-card ios light">
+                        <h3 class="ios-title">Just right</h3>
+                        <div class="ios-meta">
+                            <span class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+                            <span>May 25 &#183; JonWadsworth</span>
+                        </div>
+                        <p class="review-body">Other apps had way too many options, and poor user interface. I love the simplicity and clear features this app has. Nicely done!</p>
+                        <div class="review-source"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> App Store</div>
+                    </article>
+                </div>
+
+                <button class="carousel-btn prev" type="button" aria-label="Previous review" data-carousel="reviews">&#8249;</button>
+                <button class="carousel-btn next" type="button" aria-label="Next review" data-carousel="reviews">&#8250;</button>
+            </div>
+            <div class="carousel-dots" id="reviewsDots"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-buttons">
+                    <a class="app-cta" href="https://apps.apple.com/us/app/pocket-breath-coach/id6444422222" target="_blank" rel="noopener">
+                        <span class="app-cta-icon"></span><span class="app-cta-label">Download on the App Store</span>
+                    </a>
+                </div>
+                <p>Copyright © <span id="current-year"></span> Pocket Breath Coach</p>
+                <div class="footer-links">
+                    <a href="/terms/">Terms of Service</a>
+                    <a href="/privacy/">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year dynamically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Instagram landing page: fixed campaign = "instagram". Detect the
+        // platform and point the single CTA at the matching store, then label
+        // it to suit. The button is real text (not a PNG badge), so there's no
+        // baked-in image text for iOS Live Text to hijack and no user-select /
+        // pointer-events workaround is needed.
+        //
+        // NOTE: this does NOT make a plain tap open the App Store inside
+        // Instagram's iOS in-app browser — Meta blocks apps.apple.com taps
+        // regardless of markup. Long-press -> "Open Link" remains the workaround
+        // there; a real button just makes that gesture clean everywhere.
+        (function () {
+            var SLUG = 'instagram';
+            var APPLE_PT = '2104604';
+            var IOS_URL = 'https://apps.apple.com/us/app/pocket-breath-coach/id6444422222?pt=' +
+                APPLE_PT + '&ct=' + SLUG;
+            var ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.headfulness.pocket_breath_coach' +
+                '&referrer=' + encodeURIComponent('utm_source=web&utm_medium=site&utm_campaign=' + SLUG);
+
+            var APPLE_SVG = '<svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>';
+            var PLAY_SVG = '<svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>';
+
+            var ua = navigator.userAgent || '';
+            // iPadOS 13+ reports as MacIntel with touch — treat as iOS.
+            var isIos = /iPhone|iPad|iPod/i.test(ua) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var isAndroid = /Android/i.test(ua) && !isIos;
+
+            // Android -> Play; everything else (iOS, plus desktop as a sensible
+            // default for a mostly-mobile Instagram audience) -> App Store.
+            var href = isAndroid ? ANDROID_URL : IOS_URL;
+            var label = isAndroid ? 'Get it on Google Play' : 'Download on the App Store';
+            var icon = isAndroid ? PLAY_SVG : APPLE_SVG;
+
+            var ctas = document.querySelectorAll('.app-cta');
+            for (var i = 0; i < ctas.length; i++) {
+                ctas[i].href = href;
+                var iconEl = ctas[i].querySelector('.app-cta-icon');
+                var labelEl = ctas[i].querySelector('.app-cta-label');
+                if (iconEl) iconEl.innerHTML = icon;
+                if (labelEl) labelEl.textContent = label;
+            }
+        })();
+
+        // Benefits screenshot carousel
+        (function () {
+            var track = document.getElementById('carouselTrack');
+            var dotsBox = document.getElementById('carouselDots');
+            if (!track || !dotsBox) return;
+
+            var slides = track.children;
+            var index = 0;
+            var timer = null;
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            for (var i = 0; i < slides.length; i++) {
+                (function (i) {
+                    var dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
+                    dot.addEventListener('click', function () { goTo(i); restart(); });
+                    dotsBox.appendChild(dot);
+                })(i);
+            }
+
+            function goTo(i) {
+                index = (i + slides.length) % slides.length;
+                track.scrollTo({
+                    left: index * track.clientWidth,
+                    behavior: reducedMotion ? 'auto' : 'smooth'
+                });
+            }
+
+            function updateDots() {
+                for (var i = 0; i < dotsBox.children.length; i++) {
+                    dotsBox.children[i].classList.toggle('active', i === index);
+                }
+            }
+
+            track.addEventListener('scroll', function () {
+                var i = Math.round(track.scrollLeft / track.clientWidth);
+                if (i !== index) {
+                    index = i;
+                    updateDots();
+                }
+            }, { passive: true });
+
+            document.querySelector('.carousel-btn.prev').addEventListener('click', function () { goTo(index - 1); restart(); });
+            document.querySelector('.carousel-btn.next').addEventListener('click', function () { goTo(index + 1); restart(); });
+
+            function start() {
+                if (!reducedMotion) {
+                    timer = setInterval(function () { goTo(index + 1); }, 4500);
+                }
+            }
+            function stop() { clearInterval(timer); }
+            function restart() { stop(); start(); }
+
+            var box = document.querySelector('.benefits-carousel');
+            box.addEventListener('mouseenter', stop);
+            box.addEventListener('mouseleave', restart);
+            track.addEventListener('pointerdown', stop, { passive: true });
+            track.addEventListener('pointerup', restart, { passive: true });
+
+            start();
+        })();
+
+        // Reviews carousel
+        (function () {
+            var track = document.getElementById('reviewsTrack');
+            var dotsBox = document.getElementById('reviewsDots');
+            if (!track || !dotsBox) return;
+
+            var slides = track.children;
+            var index = 0;
+            var timer = null;
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            for (var i = 0; i < slides.length; i++) {
+                (function (i) {
+                    var dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to review ' + (i + 1));
+                    dot.addEventListener('click', function () { goTo(i); restart(); });
+                    dotsBox.appendChild(dot);
+                })(i);
+            }
+
+            function goTo(i) {
+                index = (i + slides.length) % slides.length;
+                var slide = slides[index];
+                var left = slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2;
+                track.scrollTo({
+                    left: Math.max(0, left),
+                    behavior: reducedMotion ? 'auto' : 'smooth'
+                });
+            }
+
+            function updateDots() {
+                for (var i = 0; i < dotsBox.children.length; i++) {
+                    dotsBox.children[i].classList.toggle('active', i === index);
+                }
+            }
+
+            track.addEventListener('scroll', function () {
+                var center = track.scrollLeft + track.clientWidth / 2;
+                var best = 0;
+                var bestDist = Infinity;
+                for (var i = 0; i < slides.length; i++) {
+                    var mid = slides[i].offsetLeft + slides[i].clientWidth / 2;
+                    var d = Math.abs(mid - center);
+                    if (d < bestDist) { bestDist = d; best = i; }
+                }
+                if (best !== index) {
+                    index = best;
+                    updateDots();
+                }
+            }, { passive: true });
+
+            var box = document.querySelector('.reviews-carousel');
+            box.querySelector('.carousel-btn.prev').addEventListener('click', function () { goTo(index - 1); restart(); });
+            box.querySelector('.carousel-btn.next').addEventListener('click', function () { goTo(index + 1); restart(); });
+
+            function start() {
+                if (!reducedMotion) {
+                    timer = setInterval(function () { goTo(index + 1); }, 6000);
+                }
+            }
+            function stop() { clearInterval(timer); }
+            function restart() { stop(); start(); }
+
+            box.addEventListener('mouseenter', stop);
+            box.addEventListener('mouseleave', restart);
+            track.addEventListener('pointerdown', stop, { passive: true });
+            track.addEventListener('pointerup', restart, { passive: true });
+
+            start();
+        })();
+    </script>
 </body>
 </html>

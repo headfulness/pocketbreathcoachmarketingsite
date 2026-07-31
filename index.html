@@ -103,6 +103,13 @@
             height: 58px;
             width: auto;
             transition: transform 0.3s ease;
+            /* Route long-press to the surrounding <a> (link "Open" menu) instead
+               of letting iOS Live Text select the text baked into the badge PNG.
+               Makes the whole badge long-pressable, not just the Apple logo. */
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: default;
+            pointer-events: none;
         }
 
         .app-download-btn:hover {
