@@ -69,7 +69,7 @@ test.describe('Pocket Breath Coach Website', () => {
     await expect(ogTitle).toHaveAttribute('content', /Pocket Breath Coach/);
 
     const ogImage = page.locator('meta[property="og:image"]');
-    await expect(ogImage).toHaveAttribute('content', /screenshot1\.png/);
+    await expect(ogImage).toHaveAttribute('content', /og-card\.jpg/);
 
     // Check Twitter Card tags
     const twitterCard = page.locator('meta[name="twitter:card"]');
