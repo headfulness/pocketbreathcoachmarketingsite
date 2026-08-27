@@ -3,6 +3,11 @@
   Source for /og-card.jpg (the 1200x630 social share card in the og:image / twitter:image
   meta tags). Not linked from the site; kept here so the card can be regenerated.
 
+  CROP-SAFE RULE: Facebook (and Messenger/comments) often renders link previews as a
+  small SQUARE-ish thumbnail with content-aware cropping, not the full 1.91:1 card.
+  All critical content (headline, sub, stars, pill) must stay inside the CENTER 630px
+  square (x = 285..915). The flanking phones are decorative wings that crops may eat.
+
   To regenerate after editing (from the repo root):
     1. Render at 2x with Playwright (already in devDependencies):
          node -e "
@@ -17,9 +22,11 @@
              await b.close();
            })();
          "
-    2. Downscale + compress (keeps text crisp, ~180KB):
+    2. Downscale + compress (keeps text crisp, ~200KB):
          sips -z 630 1200 /tmp/og-card-2x.png --out /tmp/og-card-1200.png
          sips -s format jpeg -s formatOptions 85 /tmp/og-card-1200.png --out og-card.jpg
+    3. Bump the ?v= cache-buster on the og:image/twitter:image URLs in index.html and
+       b/index.html — scrapers cache the image binary by URL.
   Keep the result under ~300KB (WhatsApp/scraper limits) and exactly 1200x630.
 -->
 <html lang="en">
@@ -51,101 +58,104 @@
   .aurora {
     position: absolute; inset: 0;
     background:
-      radial-gradient(560px 420px at 12% -8%, rgba(187,134,253,0.20), transparent 65%),
-      radial-gradient(700px 520px at 82% 46%, rgba(187,134,253,0.22), transparent 62%),
-      radial-gradient(520px 420px at 104% 112%, rgba(84,214,201,0.13), transparent 65%),
-      radial-gradient(420px 360px at -6% 108%, rgba(84,214,201,0.08), transparent 65%);
+      radial-gradient(620px 460px at 50% -14%, rgba(187,134,253,0.17), transparent 65%),
+      radial-gradient(520px 440px at -4% 108%, rgba(84,214,201,0.12), transparent 65%),
+      radial-gradient(520px 440px at 104% 108%, rgba(187,134,253,0.16), transparent 65%);
   }
 
-  /* Breathing rings behind the phone — echoes the app's breathing ring */
+  /* Breathing rings centered on the card — echo the app's breathing ring */
   .ring {
-    position: absolute;
-    border: 1.5px solid rgba(187,134,253,0.16);
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1.5px solid rgba(187,134,253,0.14);
     border-radius: 50%;
   }
-  .ring.r1 { width: 460px; height: 460px; right: -10px;  top: 45px;   }
-  .ring.r2 { width: 620px; height: 620px; right: -90px;  top: -35px;  border-color: rgba(187,134,253,0.10); }
-  .ring.r3 { width: 800px; height: 800px; right: -180px; top: -125px; border-color: rgba(187,134,253,0.055); }
+  .ring.r1 { width: 560px;  height: 560px; }
+  .ring.r2 { width: 760px;  height: 760px;  border-color: rgba(187,134,253,0.09); }
+  .ring.r3 { width: 980px;  height: 980px;  border-color: rgba(187,134,253,0.05); }
 
   /* Grain to prevent banding on the dark gradients */
   .grain {
-    position: absolute; inset: 0; opacity: 0.05;
+    position: absolute; inset: 0; opacity: 0.05; z-index: 4;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
+  /* Centered content — everything here must stay inside x = 285..915 */
   .content {
-    position: absolute; left: 72px; top: 0; height: 100%;
-    width: 660px;
-    display: flex; flex-direction: column; justify-content: center;
-    gap: 0;
+    position: absolute; left: 50%; top: 0; height: 100%;
+    transform: translateX(-50%);
+    width: 630px;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
     z-index: 3;
   }
-  .wordmark { height: 40px; width: auto; align-self: flex-start; margin-bottom: 34px; }
+  .wordmark { height: 36px; width: auto; margin-bottom: 26px; }
 
   h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 78px;
-    line-height: 1.06;
-    letter-spacing: -1.5px;
-    margin-bottom: 22px;
+    font-size: 63px;
+    line-height: 1.08;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
   }
   h1 .accent { color: var(--lavender); }
 
   .sub {
-    font-size: 27px;
-    line-height: 1.45;
+    font-size: 25px;
+    line-height: 1.4;
     color: var(--ink-muted);
-    max-width: 560px;
-    margin-bottom: 30px;
+    max-width: 520px;
+    margin-bottom: 24px;
   }
 
   .stars-row {
-    display: flex; align-items: center; gap: 14px;
-    margin-bottom: 30px;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 26px;
   }
-  .stars { color: var(--gold); font-size: 28px; letter-spacing: 5px; }
-  .stars-label { font-size: 23px; font-weight: 700; color: var(--ink); }
+  .stars { color: var(--gold); font-size: 26px; letter-spacing: 4px; }
+  .stars-label { font-size: 21px; font-weight: 700; color: var(--ink); }
 
   .pill {
-    display: inline-flex; align-items: center; gap: 12px;
-    align-self: flex-start;
+    display: inline-flex; align-items: center;
     background: var(--lavender);
     color: var(--night);
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 25px;
-    padding: 16px 30px;
+    font-size: 23px;
+    padding: 15px 28px;
     border-radius: 999px;
     box-shadow: 0 10px 40px rgba(187,134,253,0.35);
   }
 
-  /* Phone */
+  /* Flanking phones — decorative wings, safe to crop away */
   .phone {
     position: absolute;
-    right: 96px; top: 14px;
-    width: 326px; height: 640px;
-    transform: rotate(-5deg);
+    width: 244px; height: 486px;
     z-index: 2;
     background: #241D31;
     border: 1px solid rgba(242,238,248,0.16);
-    border-radius: 54px;
-    padding: 11px;
+    border-radius: 42px;
+    padding: 9px;
     box-shadow:
-      0 50px 90px rgba(0,0,0,0.6),
-      0 0 90px rgba(187,134,253,0.28);
+      0 40px 80px rgba(0,0,0,0.6),
+      0 0 70px rgba(187,134,253,0.22);
   }
   .phone .screen {
     width: 100%; height: 100%;
-    border-radius: 44px;
+    border-radius: 34px;
     overflow: hidden;
     background: #000;
   }
   .phone .screen img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center bottom;
+    object-position: center top;
   }
+  .phone.left  { left: -46px;  top: 178px; transform: rotate(8deg); }
+  .phone.right { right: -46px; top: 178px; transform: rotate(-8deg); }
+  .phone.right .screen img { object-position: center bottom; }
 </style>
 </head>
 <body>
@@ -155,7 +165,12 @@
   <div class="ring r3"></div>
   <div class="grain"></div>
 
-  <div class="phone">
+  <div class="phone left">
+    <div class="screen">
+      <img src="img/carousel-2.webp" alt="">
+    </div>
+  </div>
+  <div class="phone right">
     <div class="screen">
       <img src="screenshot1.png" alt="">
     </div>
@@ -164,7 +179,7 @@
   <div class="content">
     <img class="wordmark" src="textlogo.png" alt="">
     <h1>Breathe slower.<br><span class="accent">Feel calmer.</span></h1>
-    <p class="sub">Guided sessions that pace your breath, so you can relax and wind down.</p>
+    <p class="sub">Guided sessions that pace your breath,<br>so you can relax and wind down.</p>
     <div class="stars-row">
       <span class="stars">★★★★★</span>
       <span class="stars-label">Hundreds of 5-star reviews</span>
