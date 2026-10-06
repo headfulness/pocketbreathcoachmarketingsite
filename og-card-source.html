@@ -6,7 +6,7 @@
   CROP-SAFE RULE: Facebook (and Messenger/comments) often renders link previews as a
   small SQUARE-ish thumbnail with content-aware cropping, not the full 1.91:1 card.
   The hero phone (the app screenshot) is the critical content and sits inside the
-  CENTER 630px square (x = 285..915). All copy lives ENTIRELY in the wings (x < 285 and
+  CENTER 630px square (x = 285..915). The logo/app name and store badges live ENTIRELY in the wings (x < 285 and
   x > 915), so a square crop shows the phone alone and never cuts a word in half. Don't
   let any text cross into the center square.
 
@@ -115,44 +115,36 @@
   .wing {
     position: absolute; top: 0; height: 100%;
     width: 236px;
-    display: grid;
-    grid-template-rows: 1fr auto 1fr;   /* headline row lands on the card's midline in both wings */
-    justify-items: center;
+    display: flex; align-items: center; justify-content: center;
     text-align: center;
     z-index: 3;
   }
   .wing.left  { left: 40px; }    /* x = 40..276 */
   .wing.right { right: 40px; }   /* x = 924..1160 */
-  .wing .above { align-self: end; }
-  .wing .below { align-self: start; }
-
-  .wordmark { display: block; height: 36px; width: auto; margin-bottom: 30px; }
-
-  h1 {
+  /* Left wing: app icon + name */
+  .app-icon {
+    display: block;
+    width: 132px; height: 132px;
+    border-radius: 30px;
+    margin: 0 auto 26px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.5), 0 0 50px rgba(187,134,253,0.25);
+  }
+  .app-name {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 56px;
-    line-height: 1.08;
-    letter-spacing: -1px;
+    font-size: 50px;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: var(--ink);
   }
-  h1.accent { color: var(--lavender); }
 
-  .stars-row { margin-top: 28px; }
-  .stars { display: block; color: var(--gold); font-size: 27px; letter-spacing: 4px; margin-right: -4px; }
-  .stars-label { display: block; margin-top: 8px; font-size: 19px; font-weight: 700; color: var(--ink); white-space: nowrap; }
-
-  .pill {
-    display: inline-block;
-    margin-top: 30px;
-    background: var(--lavender);
-    color: var(--night);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 1.25;
-    padding: 13px 22px;
-    border-radius: 28px;
-    box-shadow: 0 10px 40px rgba(187,134,253,0.35);
+  /* Right wing: store badges, stacked */
+  .badges { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .badges img {
+    display: block;
+    width: 222px; height: auto;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
   }
 </style>
 </head>
@@ -165,13 +157,9 @@
   <div class="grain"></div>
 
   <div class="wing left">
-    <div class="above"><img class="wordmark" src="textlogo.png" alt=""></div>
-    <h1>Breathe<br>slower.</h1>
-    <div class="below">
-      <div class="stars-row">
-        <span class="stars">★★★★★</span>
-        <span class="stars-label">Hundreds of 5-star reviews</span>
-      </div>
+    <div>
+      <img class="app-icon" src="apple-touch-icon.png" alt="">
+      <div class="app-name">Pocket<br>Breath<br>Coach</div>
     </div>
   </div>
 
@@ -182,10 +170,9 @@
   </div>
 
   <div class="wing right">
-    <div class="above"></div>
-    <h1 class="accent">Feel<br>calmer.</h1>
-    <div class="below">
-      <span class="pill">Free on<br>iPhone &amp; Android</span>
+    <div class="badges">
+      <img src="app-store.png" alt="">
+      <img src="google-play.png" alt="">
     </div>
   </div>
 </body>
